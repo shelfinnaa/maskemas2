@@ -20,7 +20,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('usertype')->default('user');
-            $table->string('display_name')>nullable();
+            $table->string('display_name')->nullable();
         });
     }
 

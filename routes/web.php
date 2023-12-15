@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,9 @@ Route::get('/shop', function () {
 Route::get('/productdetails', function () {
     return view('productdetails');
 });
+
+Route::resource('admin/products', ProductController::class)->names([
+    'index' => 'products.index',
+    'create' => 'products.create',
+    'store' => 'products.store',
+]);
