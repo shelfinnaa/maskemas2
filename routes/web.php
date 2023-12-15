@@ -60,4 +60,14 @@ Route::resource('admin/products', ProductController::class)->names([
     'index' => 'products.index',
     'create' => 'products.create',
     'store' => 'products.store',
+    'edit' => 'products.edit',
+    'update' => 'products.update'
+
+
 ]);
+
+Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::get('admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.delete');
+Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
+    ->name('product.image.delete');
+

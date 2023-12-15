@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="description" class="mt-3">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter description" required></textarea>
+            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter description" style="white-space: pre-line" required></textarea>
         </div>
         <div class="form-group">
             <label for="custom_message" class="mt-3">Custom Message</label>
