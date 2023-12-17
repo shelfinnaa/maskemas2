@@ -2,11 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\PageContent;
 use Illuminate\Http\Request;
 
 class PageContentController extends Controller
 {
+    public function home()
+    {
+        $page_content = PageContent::all();
+        $products = Product::all();
+        return view('guesthome', compact('page_content', 'products'));
+    }
+
+    public function about()
+    {
+        $page_content = PageContent::all();
+        return view('about', compact('page_content'));
+    }
+
+    public function contact()
+    {
+        $page_content = PageContent::all();
+        return view('contact', compact('page_content'));
+    }
+
+    public function admincontentdisplay()
+    {
+        $pageContents = PageContent::all();
+        $homeContents = $pageContents->where('page', 1);
+        $aboutContents = $pageContents->where('page', 2);
+        $contactContents = $pageContents->where('page', 3);
+        return view('admin.admindisplaypagecontent', compact('homeContents', 'aboutContents', 'contactContents'));
+    }
+
+    public function edit(int $content_id)
+    {
+        try {
+            $content = PageContent::findOrFail($content_id);
+            return view('admin.adminupdatecontent', compact('content'));
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            // Handle the case where no content is found, for example, redirect to a 404 page
+            abort(404);
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -42,17 +82,29 @@ class PageContentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PageContent $pageContent)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PageContent $pageContent)
+    public function update(Request $request, int $pageContentID)
     {
-        //
+
+
+        $pageContent = PageContent::find($pageContentID);
+
+        if ($pageContent) {
+            $pageContent->update([
+                'name' => $request->input('name'),
+                'content' => $request->input('content'),
+            ]);
+
+            return redirect('admin/content')->with('message', 'Content Updated Successfully');
+
+        } else {
+
+            return redirect('admin/content')->with('message', 'Content not found');
+        }
     }
 
     /**

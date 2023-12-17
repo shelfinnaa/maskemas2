@@ -5,10 +5,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
-                    <div class="section-title-area ltn__section-title-2">
-                        <h6 class="section-subtitle ltn__secondary-color">// Welcome to our company</h6>
-                        <h1 class="section-title white-color">Shop Grid</h1>
+                <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between text-right">
+                    <div class="section-title-area ltn__section-title-2 text-right"> <!-- Change text-left to text-right -->
+                        <h6 class="section-subtitle ltn__secondary-color">Maskemas</h6>
+                        <h1 class="section-title white-color">Our Products</h1>
                     </div>
                     <div class="ltn__breadcrumb-list">
                     </div>
@@ -24,27 +24,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ltn__shop-options">
-                    <ul>
-                        <li>
-                            <div class="short-by text-center">
-                                <select class="nice-select">
-                                    <option>Default sorting</option>
-                                    <option>Sort by popularity</option>
-                                    <option>Sort by new arrivals</option>
-                                    <option>Sort by price: low to high</option>
-                                    <option>Sort by price: high to low</option>
-                                </select>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="showing-product-number text-right text-end">
-                                <span>Showing 9 of 20 results</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="section-title-area text-center">
+                    <h4>Our packaging provides numerous opportunities to enhance the visual attractiveness of your products. We would be happy to assist you in choosing the right packaging choice that will make your products stand out</h4>
                 </div>
-                <div class="tab-content">
+                <div class="tab-content text-center">
                     <div class="tab-pane fade active show" id="liton_product_grid">
                         <div class="ltn__product-tab-content-inner ltn__product-grid-view">
                             <div class="row">
@@ -62,16 +45,13 @@
                                                     <h5>No Image Added </h5>
                                                 @endif
                                             </div>
-
                                             <div class="product-info">
-                                                <h1 class="product-title m-2"><a
-                                                        href="">{{ $product->name }}</a>
-                                                </h1>
+                                                <h1 class="product-title m-2"><a href="">{{ $product->name }}</a></h1>
                                             </div>
                                         </div>
                                     </div>
                                 @empty
-                                    <div class="col-12">
+                                    <div class="section-title-area text-center">
                                         <p>No Products Available</p>
                                     </div>
                                 @endforelse
@@ -79,3 +59,15 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/plugins.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+
+</body>
+
+</html>

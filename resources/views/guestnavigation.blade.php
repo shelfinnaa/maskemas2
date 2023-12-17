@@ -54,7 +54,9 @@ $products = Product::all();
                                         <li class="menu-icon"><a href="/shop">Shop</a>
                                             <ul>
                                                 @foreach ($products as $product)
-                                                    <li><a href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a></li>
+                                                    <li><a
+                                                            href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -141,44 +143,36 @@ $products = Product::all();
                 </div>
                 <div class="ltn__utilize-menu">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Shop</a>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/shop">Shop</a>
                             <ul class="sub-menu">
-                                <li><a href="shop.html">Shop</a></li>
-                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                <li><a href="product-details.html">Shop details </a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="order-tracking.html">Order Tracking</a></li>
-                                <li><a href="account.html">My Account</a></li>
-                                <li><a href="login.html">Sign in</a></li>
-                                <li><a href="register.html">Register</a></li>
+                                @foreach ($products as $product)
+                                    <li><a
+                                            href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
                     <ul>
                         <li>
-                            <a href="account.html" title="My Account">
+                            <a href="/login" title="My Account">
+                                <span class="utilize-btn-icon">
+                                    <i class="far fa-user"></i>
+                                </span>
+                                Login
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/myaccount" title="My Account">
                                 <span class="utilize-btn-icon">
                                     <i class="far fa-user"></i>
                                 </span>
                                 My Account
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cart.html" title="Shoping Cart">
-                                <span class="utilize-btn-icon">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <sup>5</sup>
-                                </span>
-                                Shoping Cart
                             </a>
                         </li>
                     </ul>

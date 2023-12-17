@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageContentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('guesthome');
-});
+
+
+Route::get('/', [PageContentController::class, 'home'])->name('page.home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -35,20 +36,12 @@ Route::get('post', [HomeController::class, 'post'])->middleware(['auth', 'admin'
 
 require __DIR__.'/auth.php';
 
+Route::get('/about', [PageContentController::class, 'about'])->name('page.about');
+Route::get('/contact', [PageContentController::class, 'contact'])->name('contact.about');
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('/checkout', function () {
-    return view('checkout');
-});
 
 Route::get('/shop', [ProductController::class, 'shop'])->name('products.edit');
+Route::get('/admin/content', [PageContentController::class, 'admincontentdisplay'])->name('content.display');
 
 Route::get('/productdetails', function () {
     return view('productdetails');
@@ -60,8 +53,6 @@ Route::resource('admin/products', ProductController::class)->names([
     'store' => 'products.store',
     'edit' => 'products.edit',
     'update' => 'products.update'
-
-
 ]);
 
 Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
@@ -69,3 +60,8 @@ Route::get('admin/products/{product}/delete', [ProductController::class, 'destro
 Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
     ->name('product.image.delete');
 Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('productdetails');
+
+Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit');
+Route::put('admin/content/{content}', [PageContentController::class, 'update'])->name('content.update');
+
+
