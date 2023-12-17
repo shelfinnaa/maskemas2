@@ -1,3 +1,7 @@
+<?php
+use App\Models\Product;
+$products = Product::all();
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -19,6 +23,10 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
@@ -45,24 +53,9 @@
                                         <li><a href="/contact">Contact</a></li>
                                         <li class="menu-icon"><a href="/shop">Shop</a>
                                             <ul>
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                                <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                                <li><a href="product-details.html">Shop details </a></li>
-                                                <li><a href="product-details-no-sidebar.html">Shop details no sidebar
-                                                    </a></li>
-                                                <li><a href="#">Other Pages <span class="float-end">>></span></a>
-                                                    <ul>
-                                                        <li><a href="cart.html">Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="order-tracking.html">Order Tracking</a></li>
-                                                        <li><a href="account.html">My Account</a></li>
-                                                        <li><a href="login.html">Sign in</a></li>
-                                                        <li><a href="register.html">Register</a></li>
-                                                    </ul>
-                                                </li>
+                                                @foreach ($products as $product)
+                                                    <li><a href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
                                         <li><a href="/about">About</a></li>

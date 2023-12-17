@@ -48,9 +48,7 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+Route::get('/shop', [ProductController::class, 'shop'])->name('products.edit');
 
 Route::get('/productdetails', function () {
     return view('productdetails');
@@ -70,4 +68,4 @@ Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])-
 Route::get('admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.delete');
 Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
     ->name('product.image.delete');
-
+Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('productdetails');

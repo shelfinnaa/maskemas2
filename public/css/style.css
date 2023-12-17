@@ -7093,6 +7093,12 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   .ltn__shop-details-small-img.slick-arrow-2 .slick-next {
     right: 45px; }
 
+    .squared-image {
+        width: 500px;
+        height:500px;
+    }
+
+
 /* ltn__shop-details-content-wrap */
 .ltn__shop-details-content-wrap {
   padding: 50px 50px 40px; }

@@ -23,7 +23,6 @@
         @endif
 
 
-        @forelse($products as $product)
         <table class="table table-striped">
             <thead>
               <tr>
@@ -33,6 +32,7 @@
               </tr>
             </thead>
             <tbody>
+                @forelse($products as $product)
               <tr>
                 <td>{{$product -> name}}</td>
                 <td>

@@ -27,6 +27,24 @@ class ProductController extends Controller
         return view('admin.admincreateproduct');
     }
 
+    public function productDetails($id)
+{
+    $product = Product::findOrFail($id);
+    $customMessage = $product->custom_message;
+    $encodedMessage = urlencode($customMessage);
+    $phoneNumber = '8817001009';
+    $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
+
+    return view('productdetails', compact('product', 'whatsAppLink'));
+}
+
+    public function shop()
+{
+    $products = Product::all(); // Fetch products from your database
+
+    return view('shop', compact('products'));
+}
+
     /**
      * Store a newly created resource in storage.
      */
