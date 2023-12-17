@@ -4,18 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Measurement extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'small_start',
-        'small_end',
-        'med_start',
-        'med_end',
-        'large_start',
-        'large_end',
-        'custom_start',
-        'custom_end',
+        'type',
+        'value'
     ];
+
+    public function product():BelongsTo{
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

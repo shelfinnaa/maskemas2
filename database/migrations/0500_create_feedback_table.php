@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('person_name');
+            $table->string('person_title');
+            $table->string('person_image');
+            $table->string('feedback');
+            // idk how to image
+            $table->unsignedBigInteger('clients');
+            $table->foreign('clients')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

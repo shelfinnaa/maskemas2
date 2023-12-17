@@ -11,11 +11,10 @@ class PageContent extends Model
     protected $fillable = [
         'name',
         'content',
-        'page'
     ];
 
     public function pageKey()
     {
-        return $this->hasOne(Page::class, 'id', 'page');
+        return $this->hasOne(Page::class, 'page_id', 'page');
     }
 }

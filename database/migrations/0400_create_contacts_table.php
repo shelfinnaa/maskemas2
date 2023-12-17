@@ -11,7 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->unsignedBigInteger('users');
 
+            $table->foreign('users')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**
@@ -19,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('contacts');
     }
 };
