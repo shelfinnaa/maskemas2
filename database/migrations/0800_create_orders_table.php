@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->float('price');
+            $table->decimal('price');
             $table->integer('quantity');
-            $table->float('total_price');
+            $table->decimal('total_price');
             $table->string('estimated_arrival');
 
             $table-> unsignedBigInteger('product');

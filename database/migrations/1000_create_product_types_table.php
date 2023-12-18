@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('code');
-            $table->float('volume');
+            $table->decimal('volume');
             $table->string('dimension');
 
             $table->unsignedBigInteger('product');
