@@ -1,6 +1,13 @@
 @include('admin.adminnavigation')
 <div class="m-5">
-    <h1>Edit Product</h1>
+    <div class="row">
+        <div class="col">
+            <h1> Edit Category</h1>
+        </div>
+        <div class="col-auto ms-auto">
+            <a class="btn btn-success" href="{{ route('admincreateproducttype', ['product_id' => $product->id]) }}" role="button">Add New Product Type</a>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
@@ -14,7 +21,7 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label class="mt-5">Product Name</label>
+            <label class="mt-5">Category Name</label>
             <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
                 value="{{ $product->name }}" required>
         </div>
@@ -49,6 +56,43 @@
                 @endforeach
             @else
                 <h5>No Image Added </h5>
+            @endif
+        </div>
+        <div class="mt-5">
+            @if ($product->productType->isNotEmpty())
+            <h6> Product type</h6>
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Product Code</th>
+                        <th scope="col">Volume</th>
+                        <th scope="col">Dimension</th>
+                        <th scope="col">Pack Size</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($product->productType as $productType)
+                    <tr>
+                        <td>{{ $productType->name}}</td>
+                        <td>{{ $productType->code}}</td>
+                        <td>{{ $productType->volume}}</td>
+                        <td>{{ $productType->dimension}}</td>
+                        <td>{{ $productType->pack_size}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="" role="button">Update</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" href="" role="button">Delete</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @else
+                <p>No Product Type </p>
             @endif
         </div>
         <button type="submit" class="btn btn-primary mt-5">Update</button>

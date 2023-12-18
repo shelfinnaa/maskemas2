@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ProductType;
 use App\Http\Requests\StoreProductTypeRequest;
 use App\Http\Requests\UpdateProductTypeRequest;
+use Illuminate\Http\Request;
 
 class ProductTypeController extends Controller
 {
@@ -19,9 +20,32 @@ class ProductTypeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        // Validate the form data
+        $request->validate([
+            'name' => 'required|string',
+            'code' => 'required|string',
+            'volume' => 'required|numeric',
+            'dimension' => 'required|string',
+            'pack_size' => 'required|string',
+            'product_id' => 'required|exists:products,id',
+        ]);
+
+        // Create a new product type
+        ProductType::create([
+            'name' => $request->input('name'),
+            'code' => $request->input('code'),
+            'volume' => $request->input('volume'),
+            'dimension' => $request->input('dimension'),
+            'pack_size' => $request->input('pack_size'),
+            'product' => $request->input('product_id'),
+        ]);
+
+        // Redirect back with a success message
+        return redirect()->route('products.edit', ['product' => $request->input('product_id')])
+    ->with('message', 'Product Type Added');
+
     }
 
     /**
