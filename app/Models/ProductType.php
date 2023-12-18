@@ -6,15 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Measurement extends Model
+class ProductType extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'type',
-        'value'
+        'name',
+        'code',
+        'volume',
+        'dimension'
     ];
 
-    public function product():BelongsTo{
-        return $this->belongsTo(Product::class, 'product_id');
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'product');
     }
 }

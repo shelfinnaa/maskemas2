@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Measurement;
-use Illuminate\Http\Request;
+use App\Models\ProductType;
+use App\Http\Requests\StoreProductTypeRequest;
+use App\Http\Requests\UpdateProductTypeRequest;
 
-class MeasurementController extends Controller
+class ProductTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,7 @@ class MeasurementController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProductTypeRequest $request)
     {
         //
     }
@@ -34,7 +35,7 @@ class MeasurementController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Measurement $measurement)
+    public function show(ProductType $productType)
     {
         //
     }
@@ -42,7 +43,7 @@ class MeasurementController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Measurement $measurement)
+    public function edit(ProductType $productType)
     {
         //
     }
@@ -50,7 +51,7 @@ class MeasurementController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Measurement $measurement)
+    public function update(UpdateProductTypeRequest $request, ProductType $productType)
     {
         //
     }
@@ -58,7 +59,7 @@ class MeasurementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Measurement $measurement)
+    public function destroy(ProductType $productType)
     {
         //
     }
