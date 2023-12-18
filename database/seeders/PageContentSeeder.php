@@ -81,5 +81,19 @@ class PageContentSeeder extends Seeder
         ]);
 
 
+        //images
+        DB::table('page_contents')->insert([
+            'name' => 'Home Banner 1 Image',
+            'content' => 'uploads/contents/papercups.png',
+            'page' => 1
+        ]);
+
+        DB::table('page_contents')->insert([
+            'name' => 'Home Banner 2 Image',
+            'content' => 'uploads/contents/foodpacks.png',
+            'page' => 1
+        ]);
+
+
     }
 }

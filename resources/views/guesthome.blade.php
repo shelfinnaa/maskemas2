@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="slide-item-img">
-                                <img src="img/slider/23.png" alt="#">
+                                <img src="{{ $page_content->where('id', 14)->first()->content }}" alt="#">
                             </div>
                         </div>
                     </div>

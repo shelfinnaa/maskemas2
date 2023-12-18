@@ -61,6 +61,7 @@ class ProductController extends Controller
         // Create a new product using Eloquent
         $product = Product::create($validatedData);
 
+
         if ($request->hasFile('image')) {
             $uploadPath = 'uploads/products/';
             foreach ($request->file('image') as $imageFile) {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\PageContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PageContentController extends Controller
 {
@@ -98,6 +99,31 @@ class PageContentController extends Controller
                 'name' => $request->input('name'),
                 'content' => $request->input('content'),
             ]);
+
+            if ($request->hasFile('image')) {
+                $uploadPath = 'uploads/contents/';
+
+                // Use the file method instead of input to get the file
+                $imageFile = $request->file('image');
+
+                if ( File::exists($pageContent->content)) {
+                    File::delete($pageContent->content);
+                }
+
+                // Check if the file is not null
+                if ($imageFile !== null) {
+                    $extension = $imageFile->getClientOriginalExtension();
+                    $filename = time() . '.' . $extension;
+                    $imageFile->move($uploadPath, $filename);
+                    $finalImagePathName = $uploadPath . $filename;
+
+                    $pageContent->update([
+                        'content' => $finalImagePathName,
+                    ]);
+                } else {
+
+                }
+            }
 
             return redirect('admin/content')->with('message', 'Content Updated Successfully');
 
