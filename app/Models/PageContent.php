@@ -15,6 +15,6 @@ class PageContent extends Model
 
     public function pageKey()
     {
-        return $this->hasOne(Page::class, 'page_id', 'page');
+        return $this->hasOne(Page::class, 'id', 'page');
     }
 }

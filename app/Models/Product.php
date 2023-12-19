@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ProductType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -23,10 +24,10 @@ class Product extends Model
         return $this ->  hasMany(ProductImage::class, 'product_id', 'product');
     }
 
-    public function measurement() : HasMany
-    {
-        return $this ->  hasMany(Measurement::class, 'measurement_id', 'measurement');
-    }
+    public function productType(): HasMany
+{
+    return $this->hasMany(ProductType::class, 'product', 'id');
+}
 
     public function order(): HasMany
     {

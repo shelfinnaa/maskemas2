@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('code');
             $table->decimal('volume');
             $table->string('dimension');
+            $table->string('pack_size');
 
             $table->unsignedBigInteger('product');
             $table->foreign('product')->references('id')->on('products')->onDelete('cascade');

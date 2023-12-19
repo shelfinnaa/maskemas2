@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageContentController;
+use App\Http\Controllers\ProductTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +66,13 @@ Route::get('productdetails/{product}', [ProductController::class, 'productDetail
 Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit');
 Route::put('admin/content/{content}', [PageContentController::class, 'update'])->name('content.update');
 
+Route::get('/admincreateproducttype', [ProductController::class, 'showAdminCreateProductType'])
+    ->name('admincreateproducttype');
+
+Route::post('admin/producttypes/create', [ProductTypeController::class, 'create'])->name('producttypes.create');
+
 
 Route::get('feedback/',[FeedbackController::class,'index'])->name('feedback.index');
 Route::get('feedback/create',[FeedbackController::class,'create'])->name('feedback.create');
+
 

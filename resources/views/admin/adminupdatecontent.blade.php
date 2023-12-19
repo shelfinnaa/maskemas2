@@ -7,7 +7,7 @@
         <div class="alert alert-success">{{ session('message') }}</div>
     @endif
     </div>
-    <form action="{{ route('content.update', ['content' => $content->id]) }}" method="POST" >
+    <form action="{{ route('content.update', ['content' => $content->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
@@ -17,6 +17,10 @@
         <div class="form-group">
             <label for="content" class="mt-3">Content</label>
             <textarea class="form-control mt-3" id="content" name="content" rows="2" required>{{$content->content}}</textarea>
+        </div>
+        <div class="form-group">
+            <label class="mt-3">Image</label>
+            <input type="file" name="image" class="form-control"/>
         </div>
         <button type="submit" class="btn btn-primary mt-5">Update</button>
       </form>

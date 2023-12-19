@@ -2,7 +2,7 @@
 <div class="container m-5">
     <div class="row">
         <div class="col">
-            <h1>Products</h1>
+            <h1>Categories</h1>
         </div>
         <div class="col-auto ms-auto">
             <a class="btn btn-success" href="{{ route('products.create') }}" role="button">Add New</a>
@@ -37,7 +37,7 @@
               </tr>
               @empty
               <tr>
-                <tr colspan="7">No Products Available</th>
+                <tr colspan="7">No Categories Available</th>
               </tr>
               @endforelse
             </tbody>

@@ -14,11 +14,13 @@ class ProductType extends Model
         'name',
         'code',
         'volume',
-        'dimension'
+        'dimension',
+        'pack_size',
+        'product'
     ];
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class, 'product_id', 'product');
+        return $this->belongsTo(Product::class, 'product', 'id');
     }
 }
