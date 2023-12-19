@@ -67,24 +67,49 @@ class ProductTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductType $productType)
+    public function edit(int $producttype_id)
     {
-        //
+        // Retrieve the product_id from the request
+
+        $producttype = ProductType::findOrFail($producttype_id);
+
+        return view('admin.adminupdateproducttype', [ 'producttype' => $producttype]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductTypeRequest $request, ProductType $productType)
+    public function update(Request $request, int $productTypeID)
     {
-        //
+        $productType = ProductType::find($productTypeID);
+
+        if ($productType) {
+            $productType->update([
+                'name' => $request->input('name'),
+                'code' => $request->input('code'),
+                'volume' => $request->input('volume'),
+                'dimension' => $request->input('dimension'),
+                'pack_size' => $request->input('pack_size'),
+            ]);
+
+            return redirect()->route('products.edit', ['product' => $productType->product])->with('message', 'Product Updated Successfully');
+
+        } else {
+
+            return redirect()->route('products.edit', ['product' => $productType->product])->with('message', 'Product Not Found');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProductType $productType)
+    public function destroy(int $productType)
     {
-        //
+        $producttype = ProductType::findorFail($productType);
+        $product_id = $producttype->product;
+
+        $producttype->delete();
+        return redirect()->route('products.edit', ['product' => $product_id])->with('message', 'Product Deleted Successfully');
     }
 }

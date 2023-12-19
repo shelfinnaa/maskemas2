@@ -68,6 +68,11 @@ Route::put('admin/content/{content}', [PageContentController::class, 'update'])-
 
 Route::get('/admincreateproducttype', [ProductController::class, 'showAdminCreateProductType'])
     ->name('admincreateproducttype');
+    Route::get('admin/producttype/{producttype_id}/edit', [ProductTypeController::class, 'edit'])
+    ->name('producttype.edit');
+
 
 Route::post('admin/producttypes/create', [ProductTypeController::class, 'create'])->name('producttypes.create');
+Route::put('admin/producttypes/update/{productTypeID}', [ProductTypeController::class, 'update'])->name('producttypes.update');
+Route::get('admin/producttypes/{productTypeID}/delete', [ProductTypeController::class, 'destroy'])->name('producttypes.delete');
 

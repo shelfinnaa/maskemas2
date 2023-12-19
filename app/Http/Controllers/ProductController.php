@@ -32,11 +32,9 @@ class ProductController extends Controller
         // Retrieve the product_id from the request
         $product_id = $request->input('product_id');
 
-        // Perform any necessary logic with the product_id
-        // For example, you might want to pass it to the view
-
         return view('admin.admincreateproducttype', ['product_id' => $product_id]);
     }
+
 
     public function productDetails($id)
 {

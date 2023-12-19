@@ -82,10 +82,10 @@
                         <td>{{ $productType->dimension}}</td>
                         <td>{{ $productType->pack_size}}</td>
                         <td>
-                            <a class="btn btn-sm btn-warning" href="" role="button">Update</a>
+                            <a class="btn btn-sm btn-warning" href="{{url('admin/producttype/'.$productType -> id.'/edit')}}" role="button">Update</a>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-danger" href="" role="button">Delete</a>
+                            <a class="btn btn-sm btn-danger" onClick="return confirm('Are you sure, you want to delete this data?')" href="{{ route('producttypes.delete', ['productTypeID' => $productType->id]) }}" role="button">Delete</a>
                         </td>
                     </tr>
                     @endforeach
