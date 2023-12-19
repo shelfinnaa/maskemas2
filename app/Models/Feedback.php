@@ -10,11 +10,11 @@ class Feedback extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'title',
-        'image',
+        'person_name',
+        'person_title',
+        'person_image',
         'feedback',
-        'logo',
+        'client',
     ];
 
     public function user(): BelongsTo{

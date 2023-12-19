@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feedback;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -12,7 +13,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $feedbacks = Feedback::all();
+        $clients = collect(User::all());
+        return view('feedback.index', compact('feedbacks', 'clients'));
     }
 
     /**
@@ -20,7 +23,9 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        $feedbacks = Feedback::all();
+        $clients = User::all();
+        return view('feedback.create', compact('feedbacks', 'clients'));
     }
 
     /**
@@ -28,7 +33,34 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request data
+        $validatedData = $request->validate([
+            'person_name' => 'string|required',
+            'person_title' => 'string|required',
+            'feedback' => 'required',
+            'client' => 'required',
+            // ... other validation rules
+        ]);
+
+        if ($request->hasFile('person_image')) {
+            $validateData = $request->validate([
+                'person_image' => 'image'
+            ]);
+
+            $imageFile = $validateData['person_image'];
+            $uploadPath = 'uploads/feedback/';
+            $extension = $imageFile->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $imageFile->move($uploadPath, $filename);
+            $finalImagePathName = $uploadPath . $filename;
+
+            $validateData['person_image'] = $finalImagePathName;
+        }
+
+        // Create a new product using Eloquent
+        $feedback = Feedback::create($validatedData);
+
+        return redirect('feedback.index')->with('message', 'Product Added Successfully');
     }
 
     /**
