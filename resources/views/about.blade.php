@@ -1,7 +1,7 @@
 @include('guestnavigation')
 
 <!-- BREADCRUMB AREA START -->
-<div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-90 bg-image" data-bg="img/bg/5.jpg">
+<div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-60 bg-image" data-bg="{{ $page_content->where('id', 16)->first()->content }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

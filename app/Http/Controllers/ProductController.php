@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\PageContent;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -50,8 +51,9 @@ class ProductController extends Controller
     public function shop()
 {
     $products = Product::all(); // Fetch products from your database
+    $page_content = PageContent::all();
 
-    return view('shop', compact('products'));
+    return view('shop', compact('products', 'page_content'));
 }
 
     /**
@@ -75,7 +77,7 @@ class ProductController extends Controller
             $uploadPath = 'uploads/products/';
             foreach ($request->file('image') as $imageFile) {
                 $extension = $imageFile->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = time() . '_' . uniqid() . '.' . $extension;
                 $imageFile->move($uploadPath, $filename);
                 $finalImagePathName = $uploadPath . $filename;
 
@@ -127,7 +129,7 @@ class ProductController extends Controller
                 $uploadPath = 'uploads/products/';
                 foreach ($request->file('image') as $imageFile) {
                     $extension = $imageFile->getClientOriginalExtension();
-                    $filename = time() . '.' . $extension;
+                    $filename = time() . '_' . uniqid() . '.' . $extension;
                     $imageFile->move($uploadPath, $filename);
                     $finalImagePathName = $uploadPath . $filename;
 

@@ -10,21 +10,10 @@
                         <div class="col-lg-12 align-self-center">
                             <div class="slide-item-info">
                                 <div class="slide-item-info-inner ltn__slide-animation">
-                                    <div class="slide-video mb-50 d-none">
-                                        <a class="ltn__video-icon-2 ltn__video-icon-2-border"
-                                            href="https://www.youtube.com/embed/ATI7vfCgwXE?autoplay=1&showinfo=0"
-                                            data-rel="lightcase:myCollection">
-                                            <i class="fa fa-play"></i>
-                                        </a>
-                                    </div>
-                                    <h6 class="slide-sub-title animated">
-                                        {{ $page_content->where('id', 1)->first()->content }}</h6>
-                                    <h1 class="slide-title animated ">
-                                        {{ $page_content->where('id', 2)->first()->content }}</h1>
-
+                                    <h6 class="slide-sub-title animated">{{ $page_content->where('id', 1)->first()->content }}</h6>
+                                    <h1 class="slide-title animated ">{{ $page_content->where('id', 2)->first()->content }}</h1>
                                     <div class="btn-wrapper animated">
-                                        <a href="/shop" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore
-                                            Products</a>
+                                        <a href="/shop" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore Products</a>
                                     </div>
                                 </div>
                             </div>
@@ -44,8 +33,7 @@
                         <div class="col-lg-12 align-self-center">
                             <div class="slide-item-info">
                                 <div class="slide-item-info-inner ltn__slide-animation">
-                                    <h6 class="slide-sub-title animated"><img src="img/icons/icon-img/1.png"
-                                            alt="#">{{ $page_content->where('id', 3)->first()->content }} </h6>
+                                    <h6 class="slide-sub-title animated">{{ $page_content->where('id', 3)->first()->content }} </h6>
                                     <h1 class="slide-title animated ">
                                         {{ $page_content->where('id', 4)->first()->content }}</h1>
                                     <div class="slide-brief animated">
@@ -60,7 +48,7 @@
                                 </div>
                             </div>
                             <div class="slide-item-img slide-img-left">
-                                <img src="img/slider/21.png" alt="#">
+                                <img src="{{ $page_content->where('id', 15)->first()->content }}" alt="#">
                             </div>
                         </div>
                     </div>
@@ -84,21 +72,21 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/1.jpg" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/2.jpg" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/1.jpg" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
@@ -114,7 +102,7 @@
             <div class="col-lg-6 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="img/banner/13.png" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}" alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
@@ -123,14 +111,14 @@
                     <div class="col-lg-12">
                         <div class="ltn__banner-item">
                             <div class="ltn__banner-img">
-                                <a href="shop.html"><img src="img/banner/14.png" alt="Banner Image"></a>
+                                <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}" alt="Banner Image"></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="ltn__banner-item">
                             <div class="ltn__banner-img">
-                                <a href="shop.html"><img src="img/banner/15.png" alt="Banner Image"></a>
+                                <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}" alt="Banner Image"></a>
                             </div>
                         </div>
                     </div>

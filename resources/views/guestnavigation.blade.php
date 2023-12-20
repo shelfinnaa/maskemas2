@@ -120,7 +120,7 @@ $products = Product::all();
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+                                    <a href="index.html"><img src="img/logo.png" alt="Logo"  height="80"></a>
                                 </div>
                             </div>
                         </div>

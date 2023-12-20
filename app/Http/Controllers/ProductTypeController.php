@@ -33,7 +33,7 @@ class ProductTypeController extends Controller
         ]);
 
         // Create a new product type
-        ProductType::create([
+        $productType = ProductType::create([
             'name' => $request->input('name'),
             'code' => $request->input('code'),
             'volume' => $request->input('volume'),
@@ -42,9 +42,15 @@ class ProductTypeController extends Controller
             'product' => $request->input('product_id'),
         ]);
 
-        // Redirect back with a success message
-        return redirect()->route('products.edit', ['product' => $request->input('product_id')])
-    ->with('message', 'Product Type Added');
+        if ($productType) {
+            // Redirect back with a success message
+            return redirect()->route('products.edit', ['product' => $request->input('product_id')])
+                ->with('message', 'Product Type Added Successfully');
+        } else {
+            // Redirect back with an error message
+            return redirect()->route('products.edit', ['product' => $request->input('product_id')])
+                ->with('error', 'Failed to add Product Type');
+        }
 
     }
 

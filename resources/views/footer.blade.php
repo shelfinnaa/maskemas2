@@ -5,19 +5,19 @@
             <div class="row justify-content-center">
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-about-widget">
-                        <div class="footer-logo">
+                        <div class="footer-logo mb-n5">
                             <div class="site-logo">
-                                <img src="img/logo.png" alt="Logo">
+                                <img src="img/logo.png" alt="Logo" height="60">
                             </div>
                         </div>
-                        <div class="footer-address">
+                        <div class="footer-address mt-n5">
                             <ul>
                                 <li>
                                     <div class="footer-address-icon">
                                         <i class="icon-placeholder"></i>
                                     </div>
                                     <div class="footer-address-info">
-                                        <p>Surabaya, Indonesia</p>
+                                        <p>Surabaya</p>
                                     </div>
                                 </li>
                                 <li>
@@ -80,7 +80,7 @@
 
                     <div class="footer-widget footer-newsletter-widget fix">
                         <h4 class="footer-title">Newsletter</h4>
-                        <p>Subscribe to receive updates via email</p>
+                        <p>Receive updates via email</p>
                         <div class="footer-newsletter">
                             <form action="#">
                                 <input type="email" name="email" placeholder="Email*">

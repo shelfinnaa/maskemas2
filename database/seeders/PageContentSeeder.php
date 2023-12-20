@@ -16,12 +16,12 @@ class PageContentSeeder extends Seeder
     {
         DB::table('page_contents')->insert([
             'name' => 'Home Banner 1 Top Tagline',
-            'content' => 'Versatile, Functional, and Durable',
+            'content' => 'Maskemas: Solusi Kemasanmu',
             'page' => 1
         ]);
         DB::table('page_contents')->insert([
             'name' => 'Home Banner 1 Title',
-            'content' => 'Paper Cups',
+            'content' => 'All Your Packaging Needs',
             'page' => 1
         ]);
         DB::table('page_contents')->insert([
@@ -83,17 +83,46 @@ class PageContentSeeder extends Seeder
 
         //images
         DB::table('page_contents')->insert([
-            'name' => 'Home Banner 1 Image',
+            'name' => 'Home Banner 1 Image 922x467',
             'content' => 'uploads/contents/papercups.png',
             'page' => 1
         ]);
 
         DB::table('page_contents')->insert([
-            'name' => 'Home Banner 2 Image',
+            'name' => 'Home Banner 2 Image 1100x801',
             'content' => 'uploads/contents/foodpacks.png',
             'page' => 1
         ]);
-
+        DB::table('page_contents')->insert([
+            'name' => 'About Us Banner Image 1920x501',
+            'content' => 'uploads/contents/homebanner501.png',
+            'page' => 2
+        ]);
+        DB::table('page_contents')->insert([
+            'name' => 'Contact Us Banner Image 1920x750',
+            'content' => 'uploads/contents/homebanner750.png',
+            'page' => 3
+        ]);
+        DB::table('page_contents')->insert([
+            'name' => 'Shop Banner Image 1920x750',
+            'content' => 'uploads/contents/homebanner750.png',
+            'page' => 4
+        ]);
+        DB::table('page_contents')->insert([
+            'name' => 'Home Image Information 1 650x295',
+            'content' => 'uploads/contents/homeimageinfo1.png',
+            'page' => 1
+        ]);
+        DB::table('page_contents')->insert([
+            'name' => 'Home Image Information 2 650x295',
+            'content' => 'uploads/contents/homeimageinfo2.png',
+            'page' => 1
+        ]);
+        DB::table('page_contents')->insert([
+            'name' => 'Home Image Information 3 565x550',
+            'content' => 'uploads/contents/homeimageinfo3.png',
+            'page' => 1
+        ]);
 
     }
 }

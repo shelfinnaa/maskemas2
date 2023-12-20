@@ -24,5 +24,9 @@ class PageSeeder extends Seeder
         DB::table('pages')->insert([
             'name' => 'Contact',
         ]);
+
+        DB::table('pages')->insert([
+            'name' => 'Shop',
+        ]);
     }
 }
