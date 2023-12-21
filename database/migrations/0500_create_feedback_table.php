@@ -16,10 +16,10 @@ return new class extends Migration
             $table->timestamps();
             $table->string('person_name');
             $table->string('person_title');
-            $table->string('person_image');
+            $table->string('person_image')->nullable();
             $table->text('feedback');
             // idk how to image
-            $table->unsignedBigInteger('clients');
+            $table->unsignedBigInteger('clients')->nullable();
             $table->foreign('clients')->references('id')->on('users')->onDelete('cascade');
         });
     }

@@ -1,8 +1,8 @@
 @include('admin.adminnavigation')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <h1>Adding Feedback</h1>
-    <form action="{{ route('feedback.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+    <form method="POST" action="">
+
         <div class="form-group">
             <label for="client">Select Client</label>
             <select name="client" id="client">
@@ -19,26 +19,26 @@
 
         <div class="form-group">
             <label>Client Name</label>
-            <input type="text" name="person_name" id="person_name" placeholder="Name" required>
+            <input type="text" name="name" id="name" placeholder="Name">
         </div>
 
         <div class="form-group">
             <label>Client Job Title</label>
-            <input type="text" name="person_title" id="person_title" placeholder="E.g. Founder" required>
-        </div>
-
-        <div class="form-group">
-            <label>Client Feedback</label>
-            <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Client Feedback" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label class="mt-3">Client Images</label>
-            <input type="file" name="person_image" class="form-control" />
+            <input type="text" name="title" id="title" placeholder="E.g. Founder">
         </div>
 
         <div>
-            <button type="submit">Add new</button>
+            <label>Client Feedback</label>
+            <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Client Feedback"></textarea>
+        </div>
+
+        <div>
+            <label class="mt-3">Client Images</label>
+            <input type="file" name="image[]" class="form-control" />
+        </div>
+
+        <div>
+            <input type="submit" value="Add new Feedback">
         </div>
 
     </form>
