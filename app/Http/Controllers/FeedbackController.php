@@ -74,11 +74,11 @@ class FeedbackController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Feedback $feedback)
+    public function edit($feedback_id)
     {
-        $feedbacks = Feedback::all();
+        $feedback = Feedback::findorFail($feedback_id);
         $clients = User::all();
-        return view('feedback.edit', compact('feedbacks', 'clients'));
+        return view('feedback.edit', compact('feedback', 'clients'));
     }
 
     /**
@@ -86,7 +86,13 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, int $feedback_id)
     {
-        $validatedData = $request->validated();
+        $validatedData = $request->validate([
+            'person_name' => 'string|required',
+            'person_title' => 'string|required',
+            'feedback' => 'required',
+            // 'client' => 'required',
+            // ... other validation rules
+        ]);
 
         $feedback = Feedback::find($feedback_id);
 
@@ -125,8 +131,10 @@ class FeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Feedback $feedback)
+    public function destroy($feedback_id)
     {
-        //
+        $feedback = Feedback::findorFail($feedback_id);
+        $feedback->delete();
+        return redirect('feedback/')->with('message', 'Feedback Deleted Successfully');
     }
 }
