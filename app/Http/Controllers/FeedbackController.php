@@ -38,9 +38,12 @@ class FeedbackController extends Controller
             'person_name' => 'string|required',
             'person_title' => 'string|required',
             'feedback' => 'required',
-            'client' => 'required',
+            // 'client' => 'required',
             // ... other validation rules
         ]);
+
+        // Create a new product using Eloquent
+        $feedback = Feedback::create($validatedData);
 
         if ($request->hasFile('person_image')) {
             $validateData = $request->validate([
@@ -57,10 +60,7 @@ class FeedbackController extends Controller
             $validateData['person_image'] = $finalImagePathName;
         }
 
-        // Create a new product using Eloquent
-        $feedback = Feedback::create($validatedData);
-
-        return redirect('feedback.index')->with('message', 'Product Added Successfully');
+        return redirect('feedback/')->with('message', 'Feedback Added Successfully');
     }
 
     /**
@@ -74,24 +74,67 @@ class FeedbackController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Feedback $feedback)
+    public function edit($feedback_id)
     {
-        //
+        $feedback = Feedback::findorFail($feedback_id);
+        $clients = User::all();
+        return view('feedback.edit', compact('feedback', 'clients'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(Request $request, int $feedback_id)
     {
-        //
+        $validatedData = $request->validate([
+            'person_name' => 'string|required',
+            'person_title' => 'string|required',
+            'feedback' => 'required',
+            // 'client' => 'required',
+            // ... other validation rules
+        ]);
+
+        $feedback = Feedback::find($feedback_id);
+
+        if ($feedback) {
+            $feedback->update([
+                'person_name' => $validatedData['person_name'],
+                'person_title' => $validatedData['person_title'],
+                'feedback' => $validatedData['feedback'],
+                // 'client' => $validatedData['client'],
+            ]);
+
+
+            if ($request->hasFile('person_image')) {
+                $validateData = $request->validate([
+                    'person_image' => 'image'
+                ]);
+
+                $imageFile = $validateData['person_image'];
+                $uploadPath = 'uploads/feedback/';
+                $extension = $imageFile->getClientOriginalExtension();
+                $filename = time() . '.' . $extension;
+                $imageFile->move($uploadPath, $filename);
+                $finalImagePathName = $uploadPath . $filename;
+
+                $validateData['person_image'] = $finalImagePathName;
+            }
+
+
+            return redirect('feedback/')->with('message', 'Feedback Updated Successfully');
+        } else {
+
+            return redirect('feedback/')->with('message', 'Feedback not found');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Feedback $feedback)
+    public function destroy($feedback_id)
     {
-        //
+        $feedback = Feedback::findorFail($feedback_id);
+        $feedback->delete();
+        return redirect('feedback/')->with('message', 'Feedback Deleted Successfully');
     }
 }

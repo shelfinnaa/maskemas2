@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Client Feedback</title>
+    <title>Orders</title>
 </head>
 
 <body>
-    <h1>Feedback</h1>
+    <h1>Orders</h1>
     <p>Index</p>
-    <a href="{{ route('feedback.create') }}">create new feedback</a>
+    <a href="{{ route('feedback.create') }}">create new order</a>
 
-    @if ($feedbacks->count() == 0)
-        <h2>there are no feedbacks</h2>
+    @if ($orders->count() == 0)
+        <h2>there are no orders</h2>
     @else
         <table>
             <tr>
