@@ -8,14 +8,11 @@
             <div class="col-lg-12">
                 <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
                     <div class="section-title-area ltn__section-title-2">
-                        <h6 class="section-subtitle ltn__secondary-color">// Welcome to our company</h6>
-                        <h1 class="section-title white-color">Product Details</h1>
+                        <h6 class="section-subtitle ltn__secondary-color">Maskemas</h6>
+                        <h1 class="section-title white-color">{{$product->name}}</h1>
                     </div>
                     <div class="ltn__breadcrumb-list">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li>Product Details</li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
@@ -56,13 +53,15 @@
                         </div>
                         <div class="col-md-6">
                             <div class="modal-product-info shop-details-info pl-0">
-                                <h1>{{$product->name}}</h1>
+                                <h1 dir="ltr">{{$product->name}}</h1>
                                 <hr>
+                                <div dir="ltr">
                                 <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
-                                    data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
-                                    <i class="fab fa-whatsapp"></i>
+                                    data-bs-toggle="modal" data-bs-target="#add_to_cart_modal" >
+                                    <i class="fab fa-whatsapp" ></i>
                                     <span>Whatsapp</span>
                                 </a>
+                                <div>
                                 <hr>
                                 <!-- Shop Tab Start -->
                                 <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2">
@@ -70,7 +69,7 @@
                                         <div class="ltn__shop-details-tab-content-inner">
                                             <!-- Wrap the content you want to align right in a separate div -->
                                             <div class="text-right">
-                                                <p style="white-space: pre-line">{{$product->description}}</p>
+                                                <p style="white-space: pre-line" dir="ltr">{{$product->description}}</p>
                                             </div>
                                         </div>
                                     </div>
