@@ -121,10 +121,10 @@ class FeedbackController extends Controller
             }
 
 
-            return redirect('feedback/')->with('message', 'Feedback Updated Successfully');
+            return redirect('admin/feedback/')->with('message', 'Feedback Updated Successfully');
         } else {
 
-            return redirect('feedback/')->with('message', 'Feedback not found');
+            return redirect('admin/feedback/')->with('message', 'Feedback not found');
         }
     }
 
@@ -135,6 +135,6 @@ class FeedbackController extends Controller
     {
         $feedback = Feedback::findorFail($feedback_id);
         $feedback->delete();
-        return redirect('feedback/')->with('message', 'Feedback Deleted Successfully');
+        return redirect('admin/feedback/')->with('message', 'Feedback Deleted Successfully');
     }
 }

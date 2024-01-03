@@ -10,6 +10,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'tracking_id',
         'contact_info',
         'total_price',
         'quantity',

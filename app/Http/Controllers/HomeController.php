@@ -26,4 +26,8 @@ class HomeController extends Controller
     public function post(){
         return view('post');
     }
+
+    public function track(){
+        return view('ordersearch');
+    }
 }

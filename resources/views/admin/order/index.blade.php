@@ -27,19 +27,19 @@
                 </tr>
                 @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->tracking_id }}</td>
                         <td>{{ $clients[$order->client - 1]->name }}</td>
                         <td>{{ $products[$order->product - 1]->name }}</td>
                         <td>x{{ $order->quantity }}</td>
                         <td>IDR {{ $order->total_price }} </td>
-                        <td>{{ $status[$order->status - 1]->name }}</td>
+                        <td>{{ $statuses[$order->status - 1]->name }}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ url('order/' . $order->id . '/details') }}"
+                            <a class="btn btn-sm btn-info" href="{{ url('admin/order/' . $order->id . '/show') }}"
                                 role="button">View Details</a>
-                            <a class="btn btn-sm btn-warning" href="{{ url('order/' . $order->id . '/edit') }}"
+                            <a class="btn btn-sm btn-warning" href="{{ url('admin/order/' . $order->id . '/edit') }}"
                                 role="button">Update</a>
                             <a class="btn btn-sm btn-danger" {{-- onClick="return confirm('Are you sure, you want to delete this data?')"  --}}
-                                href="{{ url('order/' . $order->id . '/delete') }}" role="button">Delete</a>
+                                href="{{ url('admin/order/' . $order->id . '/delete') }}" role="button">Delete</a>
                         </td>
                     </tr>
                 @endforeach

@@ -90,8 +90,12 @@ Route::get('admin/order/',[OrderController::class,'index'])->name('order.index')
 Route::get('admin/order/create',[OrderController::class,'create'])->name('order.create');
 Route::post('admin/order/store',[OrderController::class,'store'])->name('order.store');
 Route::get('admin/order/{order}/edit', [OrderController::class, 'edit'])->name('order.edit');
+Route::get('admin/order/{order}/show', [OrderController::class, 'show'])->name('order.show');
 Route::get('admin/order/{order}/details', [OrderController::class, 'edit'])->name('order.details');
-Route::put('admin/order/update/{order}', [OrderController::class, 'update'])->name('order.update');
+Route::put('admin/order/{order}', [OrderController::class, 'update'])->name('order.update');
 Route::get('admin/order/{order}/delete', [OrderController::class, 'destroy'])->name('order.delete');
+
+Route::get('/track', function(){return view('ordersearch');});
+Route::get('track/{order}', [OrderController::class, 'search'])->name('order.search');
 
 

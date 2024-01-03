@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            $table->string('tracking_id')->nullable();
             $table->decimal('price')->default(0.0);
             $table->integer('quantity');
             $table->decimal('total_price');
