@@ -29,13 +29,13 @@
                     <a class="nav-link" href="/admin/content">Contents</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Feedback</a>
+                    <a class="nav-link" href="{{ route('feedback.index') }}">Feedback</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
                 </li>
             </ul>
         </div>

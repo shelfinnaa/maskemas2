@@ -11,14 +11,16 @@ class Order extends Model
     use HasFactory;
     protected $fillable = [
         'contact_info',
-        'price',
+        'total_price',
         'quantity',
-        'estimated_arrival'
+        'estimated_arrival',
+        'client',
+        'product'
     ];
 
     public function client(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'client');
+        return $this->belongsTo(User::class);
     }
 
     public function status(): BelongsTo

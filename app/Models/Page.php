@@ -13,7 +13,7 @@ class Page extends Model
         'name',
     ];
 
-    public function content():HasMany{
+    public function contents():HasMany{
         return $this->hasMany(PageContent::class, 'content_id', 'content');
     }
 }

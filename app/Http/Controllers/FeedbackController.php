@@ -15,7 +15,7 @@ class FeedbackController extends Controller
     {
         $feedbacks = Feedback::all();
         $clients = collect(User::all());
-        return view('feedback.index', compact('feedbacks', 'clients'));
+        return view('admin.feedback.index', compact('feedbacks', 'clients'));
     }
 
     /**
@@ -25,7 +25,7 @@ class FeedbackController extends Controller
     {
         $feedbacks = Feedback::all();
         $clients = User::all();
-        return view('feedback.create', compact('feedbacks', 'clients'));
+        return view('admin.feedback.create', compact('feedbacks', 'clients'));
     }
 
     /**
@@ -38,7 +38,7 @@ class FeedbackController extends Controller
             'person_name' => 'string|required',
             'person_title' => 'string|required',
             'feedback' => 'required',
-            // 'client' => 'required',
+            'client' => 'required',
             // ... other validation rules
         ]);
 
@@ -60,7 +60,7 @@ class FeedbackController extends Controller
             $validateData['person_image'] = $finalImagePathName;
         }
 
-        return redirect('feedback/')->with('message', 'Feedback Added Successfully');
+        return redirect('admin/feedback/')->with('message', 'Feedback Added Successfully');
     }
 
     /**
@@ -78,7 +78,7 @@ class FeedbackController extends Controller
     {
         $feedback = Feedback::findorFail($feedback_id);
         $clients = User::all();
-        return view('feedback.edit', compact('feedback', 'clients'));
+        return view('admin.feedback.edit', compact('feedback', 'clients'));
     }
 
     /**

@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->decimal('price');
+            $table->decimal('price')->default(0.0);
             $table->integer('quantity');
             $table->decimal('total_price');
-            $table->string('estimated_arrival');
+            $table->string('estimated_arrival')->nullable();
 
             $table-> unsignedBigInteger('product');
-            $table-> unsignedBigInteger('contact_info');
+            $table-> unsignedBigInteger('contact_info')->nullable();
             $table-> unsignedBigInteger('client');
-            $table-> unsignedBigInteger('status');
+            $table-> unsignedBigInteger('status')->default('1');
 
             $table -> foreign('product')-> references ('id')->on('products')->onDelete('cascade');
             $table -> foreign('contact_info')-> references ('id')->on('contacts')->onDelete('cascade');

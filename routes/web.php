@@ -3,10 +3,12 @@
 use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\ProductTypeController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,18 +79,19 @@ Route::put('admin/producttypes/update/{productTypeID}', [ProductTypeController::
 Route::get('admin/producttypes/{productTypeID}/delete', [ProductTypeController::class, 'destroy'])->name('producttypes.delete');
 
 
-Route::get('feedback/',[FeedbackController::class,'index'])->name('feedback.index');
-Route::get('feedback/create',[FeedbackController::class,'create'])->name('feedback.create');
-Route::post('feedback/store',[FeedbackController::class,'store'])->name('feedback.store');
-Route::get('feedback/{feedback}/edit', [FeedbackController::class, 'edit'])->name('feedback.edit');
-Route::put('feedback/update/{feedback}', [FeedbackController::class, 'update'])->name('feedback.update');
-Route::get('feedback/{feedback}/delete', [FeedbackController::class, 'destroy'])->name('feedback.delete');
-// Route::resource('feedback', FeedbackController::class)->names([
-//     'index' => 'feedback.index',
-//     'create' => 'feedback.create',
-//     'store' => 'feedback.store',
-//     'edit' => 'feedback.edit',
-//     'update' => 'feedback.update'
-// ]);
+Route::get('admin/feedback/',[FeedbackController::class,'index'])->name('feedback.index');
+Route::get('admin/feedback/create',[FeedbackController::class,'create'])->name('feedback.create');
+Route::post('admin/feedback/store',[FeedbackController::class,'store'])->name('feedback.store');
+Route::get('admin/feedback/{feedback}/edit', [FeedbackController::class, 'edit'])->name('feedback.edit');
+Route::put('admin/feedback/update/{feedback}', [FeedbackController::class, 'update'])->name('feedback.update');
+Route::get('admin/feedback/{feedback}/delete', [FeedbackController::class, 'destroy'])->name('feedback.delete');
+
+Route::get('admin/order/',[OrderController::class,'index'])->name('order.index');
+Route::get('admin/order/create',[OrderController::class,'create'])->name('order.create');
+Route::post('admin/order/store',[OrderController::class,'store'])->name('order.store');
+Route::get('admin/order/{order}/edit', [OrderController::class, 'edit'])->name('order.edit');
+Route::get('admin/order/{order}/details', [OrderController::class, 'edit'])->name('order.details');
+Route::put('admin/order/update/{order}', [OrderController::class, 'update'])->name('order.update');
+Route::get('admin/order/{order}/delete', [OrderController::class, 'destroy'])->name('order.delete');
 
 

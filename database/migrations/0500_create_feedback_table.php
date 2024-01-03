@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('person_image')->nullable();
             $table->text('feedback');
             // idk how to image
-            $table->unsignedBigInteger('clients')->nullable();
-            $table->foreign('clients')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('client');
+            $table->foreign('client')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

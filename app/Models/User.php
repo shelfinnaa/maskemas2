@@ -46,17 +46,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function feedback(): HasMany
+    public function feedbacks(): HasMany
     {
         return $this->hasMany(Feedback::class, 'feedback_id');
     }
 
-    public function contact(): HasMany
+    public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class, 'contact_id');
     }
 
-    public function order(): HasMany
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class, 'order_id');
     }

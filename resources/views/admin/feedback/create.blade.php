@@ -9,7 +9,7 @@
                 <option value="" disabled selected>Select a Client</option>
                 @if($clients->count() > 0)
                 @foreach ($clients as $client)
-                    <option value="<?=$client->id?>"><?=$client->name?></option>
+                    <option value="{{ $client->id }}">{{ $client->name }}</option>
                 @endforeach
                 @else
                 <option value="" disabled>THERE ARE NO USERS</option>
