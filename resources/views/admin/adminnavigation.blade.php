@@ -32,7 +32,7 @@
                     <a class="nav-link" href="{{ route('feedback.index') }}">Feedback</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Users</a>
+                    <a class="nav-link" href="/users">Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('order.index') }}">Orders</a>
