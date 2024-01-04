@@ -30,10 +30,10 @@
                     <td>{{ $clients[$feedback->client - 1]->name }}</td>
                     <td><?= $feedback->feedback ?></td>
                     <td>
-                        <a class="btn btn-sm btn-warning" href="{{ url('feedback/' . $feedback->id . '/edit') }}"
+                        <a class="btn btn-sm btn-warning" href="{{ url('feedback/edit' . $feedback->id ) }}"
                             role="button">Update</a>
                         <a class="btn btn-sm btn-danger" {{-- onClick="return confirm('Are you sure, you want to delete this data?')"  --}}
-                            href="{{ url('feedback/' . $feedback->id . '/delete') }}" role="button">Delete</a>
+                            href="{{ url('feedback/delete' . $feedback->id) }}" role="button">Delete</a>
                     </td>
                 </tr>
             @endforeach

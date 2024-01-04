@@ -19,5 +19,12 @@ class UserSeeder extends Seeder
             'email' => 'email@email.com',
             'usertype' => 'user'
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'dummyadmin',
+            'password' => '1234',
+            'email' => 'email@email.net',
+            'usertype' => 'admin'
+        ]);
     }
 }

@@ -13,10 +13,19 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     function generateTrackingCode($date, $itemId, $clientId)
+     {
+         $month = $date->format('m');  // Extract month as two-digit string
+         $day = $date->format('d');   // Extract day as two-digit string
+         $code = sprintf("%02d%02d%03d%03d", $day, $month, $clientId, $itemId);  // Format the code
+         return $code;
+     }
+
     public function index()
     {
         $orders = Order::all();
-        $clients = User::all();
+        $clients = User::all()->where('usertype','=','user');
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.index', compact('orders', 'clients', 'products', 'statuses'));
@@ -28,7 +37,7 @@ class OrderController extends Controller
     public function create()
     {
         $orders = Order::all();
-        $clients = User::all();
+        $clients = User::all()->where('usertype','=','user');
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.create', compact('orders', 'clients', 'products', 'statuses'));
@@ -57,7 +66,7 @@ class OrderController extends Controller
         ]);
 
         $order->update([
-            'tracking_id' => $order->client.$order->product.$order->id
+            'tracking_id' => OrderController::generateTrackingCode($order->created_at, $order->client, $order->product)
         ]);
 
         return redirect('admin/order/')->with('message', 'Order Added Successfully');
@@ -68,7 +77,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        $clients = User::all();
+        $clients = User::all()->where('usertype','=','user');
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.show', compact('order', 'clients', 'products', 'statuses'));
@@ -79,7 +88,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        $clients = User::all();
+        $clients = User::all()->where('usertype','=','user');
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.edit', compact('order', 'clients', 'products', 'statuses'));
@@ -150,4 +159,6 @@ class OrderController extends Controller
     public function product($id){
         return Product::find($id);
     }
+
+
 }
