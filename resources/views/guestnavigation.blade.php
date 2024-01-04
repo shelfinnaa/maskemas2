@@ -8,7 +8,7 @@ $products = Product::all();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Broccoli - Organic Food HTML Template</title>
+    <title>Maskemas</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,13 +69,12 @@ $products = Product::all();
                     </div>
                     <div class="ltn__header-options ltn__header-options-2">
                         <!-- user-menu -->
-                        <div class="ltn__drop-menu user-menu">
+                        <div class="ltn__drop-menu user-menu d-none d-xl-block">
                             <ul>
                                 <li>
                                     @auth
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-
                                             <li><a href="#">My Account</a></li>
                                             <li><a href="{{ route('logout') }}"
                                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -93,6 +92,7 @@ $products = Product::all();
                         </div>
 
 
+
                         <!-- mini-cart -->
                         @auth
                             <div class="mini-cart-icon">
@@ -102,6 +102,7 @@ $products = Product::all();
                             </div>
                         @endauth
                         <!-- mini-cart -->
+
                         <!-- Mobile Menu Button -->
                         <div class="mobile-menu-toggle d-xl-none">
                             <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
@@ -117,15 +118,15 @@ $products = Product::all();
                                 </svg>
                             </a>
                         </div>
+
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="img/logo.png" alt="Logo"  height="80"></a>
+                                    <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Logo" height="80"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -159,22 +160,36 @@ $products = Product::all();
                 </div>
                 <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
                     <ul>
-                        <li>
-                            <a href="/login" title="My Account">
-                                <span class="utilize-btn-icon">
-                                    <i class="far fa-user"></i>
-                                </span>
-                                Login
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/myaccount" title="My Account">
-                                <span class="utilize-btn-icon">
-                                    <i class="far fa-user"></i>
-                                </span>
-                                My Account
-                            </a>
-                        </li>
+                        @auth
+                            <!-- Replace the existing logout link -->
+                            <li>
+                                <a href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <span class="utilize-btn-icon">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    Logout
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/myaccount" title="My Account">
+                                    <span class="utilize-btn-icon">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    My Account
+                                </a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="/login" title="Login">
+                                    <span class="utilize-btn-icon">
+                                        <i class="far fa-user"></i>
+                                    </span>
+                                    Login
+                                </a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
                 <div class="ltn__social-media-2">

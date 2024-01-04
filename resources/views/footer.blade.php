@@ -7,7 +7,7 @@
                     <div class="footer-widget footer-about-widget">
                         <div class="footer-logo mb-n5">
                             <div class="site-logo">
-                                <img src="img/logo.png" alt="Logo" height="60">
+                                <img src="{{ asset('img/logo.png') }}" alt="Logo" height="60">
                             </div>
                         </div>
                         <div class="footer-address mt-n5">

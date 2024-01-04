@@ -7102,19 +7102,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
         background-color: #ffffff; /* Replace with your desired background color */
     }
 
-    /* Remove alternating row colors */
-    .table-custom tbody tr:nth-child(even) {
-        background-color: inherit;
-    }
-
     /* Set background color for thead */
     .table-custom thead {
         background-color: #ffffff; /* Replace with your desired background color */
-    }
-
-    /* Remove background color for the first tbody row */
-    .table-custom tbody tr:first-child {
-        background-color: inherit;
     }
 
 /* ltn__shop-details-content-wrap */

@@ -75,10 +75,9 @@
                                     </div>
                                 </div>
                                 <!-- Shop Tab End -->
-                                <hr>
+
                             </div>
                         </div>
-                        <hr>
 
 
                     </div>
@@ -88,16 +87,14 @@
 
                     <!-- Shop Tab Start -->
                      @if ($product->productType->isNotEmpty())
-                    <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2 ">
-                        <div class="ltn__shop-details-tab-menu">
-                            <div class="nav">
-                                <a class="active show" data-bs-toggle="tab" href="#liton_tab_details_1_1">Size</a>
-                            </div>
+                    <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2 " >
+                        <div class="ltn__shop-details-tab-menu" >
+
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="liton_tab_details_1_1">
                                 <div class="ltn__shop-details-tab-content-inner">
-                                    <h4 class="title-2">Product Type</h4>
+                                    <h4 class="title-2" dir="ltr">Product Type</h4>
                                     <table class="table table-custom mt-3" dir="ltr">
                                         <thead>
                                             <tr>
@@ -136,6 +133,9 @@
 
 
 </div>
+</div>
+
+@include('footer')
 <!-- Body main wrapper end -->
 
 <!-- All JS Plugins -->
