@@ -82,10 +82,13 @@
 
 
                     </div>
+                    </div>
+
+
 
                     <!-- Shop Tab Start -->
                      @if ($product->productType->isNotEmpty())
-                    <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2">
+                    <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2 ">
                         <div class="ltn__shop-details-tab-menu">
                             <div class="nav">
                                 <a class="active show" data-bs-toggle="tab" href="#liton_tab_details_1_1">Size</a>
@@ -129,6 +132,8 @@
         </div>
     </div>
     <!-- SHOP DETAILS AREA END -->
+
+
 
 </div>
 <!-- Body main wrapper end -->
