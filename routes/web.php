@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\FeedbackController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\ProductTypeController;
-use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/about', [PageContentController::class, 'about'])->name('page.about');
 Route::get('/contact', [PageContentController::class, 'contact'])->name('contact.about');
+
+Route::get('/users', [UserController::class, 'index'])->name('admin.user');
+Route::get('admin/users/{user}/delete', [UserController::class, 'destroy'])->name('user.delete');
 
 
 Route::get('/shop', [ProductController::class, 'shop'])->name('products.edit');
