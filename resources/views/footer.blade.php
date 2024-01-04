@@ -45,9 +45,9 @@
                         <h4 class="footer-title">Company</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="shop.html">All Products</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/shop">All Products</a></li>
+                                <li><a href="/contact">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                         <div class="footer-menu">
                             <ul>
                                 <li><a href="order-tracking.html">Order tracking</a></li>
-                                <li><a href="login.html">Login</a></li>
+                                <li><a href="/login">Login</a></li>
                                 <li><a href="account.html">My account</a></li>
                             </ul>
                         </div>
@@ -71,7 +71,7 @@
                             <ul>
                                 <li><a href="account.html">My account</a></li>
                                 <li><a href="order-tracking.html">Order tracking</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="/contact">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
