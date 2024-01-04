@@ -123,6 +123,11 @@ class PageContentSeeder extends Seeder
             'content' => 'uploads/contents/homeimageinfo3.png',
             'page' => 1
         ]);
+        DB::table('page_contents')->insert([
+            'name' => 'About Us Image 570x531',
+            'content' => 'uploads/contents/aboutus.png',
+            'page' => 2
+        ]);
 
     }
 }
