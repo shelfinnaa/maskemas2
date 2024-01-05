@@ -69,6 +69,7 @@
         </div>
     </div>
 </div>
+@include('footer')
 <script src="js/plugins.js"></script>
 <!-- Main JS -->
 <script src="js/main.js"></script>

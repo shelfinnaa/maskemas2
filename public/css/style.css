@@ -7116,6 +7116,25 @@ ul.wp-block-latest-posts.is-grid.alignwide {
         color: #6bbd87 /* Green text color on hover */
     }
 
+    button.product-btn {
+        text-decoration: none;
+        color: black;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    button.product-btn:hover {
+        color: green;
+    }
+
+    .carousel-image {
+        object-fit: cover;
+        width:  100%; /* Ensure the image takes the full height of the carousel */
+    }
+
 /* ltn__shop-details-content-wrap */
 .ltn__shop-details-content-wrap {
   padding: 50px 50px 40px; }

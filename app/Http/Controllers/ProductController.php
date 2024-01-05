@@ -46,7 +46,7 @@ class ProductController extends Controller
     $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
     $page_content = PageContent::all();
 
-    return view('productdetails', compact('product', 'page_content'));
+    return view('productdetail', compact('product', 'page_content', 'whatsAppLink' ));
 }
 
 public function productdetail(Request $request){

@@ -2,7 +2,7 @@
 
 <!-- BREADCRUMB AREA START -->
 <div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-90 bg-image"
-    data-bg="img/bg/9.jpg">
+    data-bg="{{ $page_content->where('id', 18)->first()->content }}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -33,7 +33,7 @@
                                 <div class="carousel-inner">
                                     @foreach ($product->productImages as $index => $image)
                                         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                            <img class="d-block w-100 squared-image"
+                                            <img class="d-block w-100 squared-image carousel-image"
                                                 src="{{ asset($image->image_path) }}" alt="Product Image">
                                         </div>
                                     @endforeach
@@ -56,7 +56,7 @@
                                 <h1 dir="ltr">{{$product->name}}</h1>
                                 <hr>
                                 <div dir="ltr">
-                                <a href="" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
+                                <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
                                     data-bs-toggle="modal" data-bs-target="#add_to_cart_modal" >
                                     <i class="fab fa-whatsapp" ></i>
                                     <span>Whatsapp</span>

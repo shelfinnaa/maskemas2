@@ -51,15 +51,22 @@ $products = Product::all();
                                 <div class="ltn__main-menu">
                                     <ul>
                                         <li><a href="/contact">Contact</a></li>
-                                        <li class="menu-icon"><a href="/shop">Shop</a>
+                                        <li class="menu-icon">
+                                            <a href="/shop">Shop</a>
                                             <ul>
                                                 @foreach ($products as $product)
-                                                    <li><a
-                                                            href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a>
+                                                    <li>
+                                                        <form action="{{ route('productdetail') }}" method="post">
+                                                            @csrf
+                                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="product-btn">
+                                                                {{ $product->name }}
+                                                            </button>
+                                                        </form>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                         </li>
+
                                         <li><a href="/about">About</a></li>
                                         <li><a href="/">Home</a></li>
                                     </ul>
@@ -152,7 +159,7 @@ $products = Product::all();
                                 <ul class="sub-menu">
                                     @foreach ($products as $product)
                                         <li>
-                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="btn-link no-underline">
+                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="product-btn">
                                                 {{ $product->name }}
                                             </button>
                                         </li>
