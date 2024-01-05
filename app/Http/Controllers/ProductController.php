@@ -38,35 +38,37 @@ class ProductController extends Controller
 
 
     public function productDetails($id)
-{
-    $product = Product::findOrFail($id);
-    $customMessage = $product->custom_message;
-    $encodedMessage = urlencode($customMessage);
-    $phoneNumber = '8817001009';
-    $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
-    $page_content = PageContent::all();
+    {
+        $page_content = PageContent::all();
+        $product = Product::findOrFail($id);
+        $customMessage = $product->custom_message;
+        $encodedMessage = urlencode($customMessage);
+        $phoneNumber = $page_content->where('id', 13)->first()->content;
+        $whatsAppLink = "https://wa.me/+62{$phoneNumber}?text={$encodedMessage}";
 
-    return view('productdetail', compact('product', 'page_content', 'whatsAppLink' ));
-}
 
-public function productdetail(Request $request){
-    $productId = $request->input('product_id');
-    $product = Product::findOrFail($productId);
-    $customMessage = $product->custom_message;
-    $encodedMessage = urlencode($customMessage);
-    $phoneNumber = '8817001009';
-    $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
-    $page_content = PageContent::all();
-    return view('productdetail', compact('page_content', 'product', 'whatsAppLink'));
-}
+        return view('productdetail', compact('product', 'page_content', 'whatsAppLink'));
+    }
+
+    public function productdetail(Request $request)
+    {
+        $page_content = PageContent::all();
+        $productId = $request->input('product_id');
+        $product = Product::findOrFail($productId);
+        $customMessage = $product->custom_message;
+        $encodedMessage = urlencode($customMessage);
+        $phoneNumber = $page_content->where('id', 13)->first()->content;
+        $whatsAppLink = "https://wa.me/+62{$phoneNumber}?text={$encodedMessage}";
+        return view('productdetail', compact('page_content', 'product', 'whatsAppLink'));
+    }
 
     public function shop()
-{
-    $products = Product::all(); // Fetch products from your database
-    $page_content = PageContent::all();
+    {
+        $products = Product::all(); // Fetch products from your database
+        $page_content = PageContent::all();
 
-    return view('shop', compact('products', 'page_content'));
-}
+        return view('shop', compact('products', 'page_content'));
+    }
 
     /**
      * Store a newly created resource in storage.

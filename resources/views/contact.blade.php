@@ -28,7 +28,7 @@
                         <img src="img/icons/10.png" alt="Icon Image">
                     </div>
                     <h3>Email Address</h3>
-                    <p>{{ $page_content->where('id', 10)->first()->content }}</p>
+                    <p><a href="mailto:{{ $page_content->where('id', 10)->first()->content }}">{{ $page_content->where('id', 10)->first()->content }}</a></p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -37,7 +37,7 @@
                         <img src="img/icons/11.png" alt="Icon Image">
                     </div>
                     <h3>Phone Number</h3>
-                    <p dir="ltr">{{ $page_content->where('id', 11)->first()->content }}</p>
+                    <p dir="ltr"><a href="tel:{{ $page_content->where('id', 11)->first()->content }}">{{ $page_content->where('id', 11)->first()->content }}</a></p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -58,7 +58,7 @@
 <p class="text-center">Connect With Us Via WhatsApp</p>
 <div class="account-create text-center pb-150">
     <div class="btn-wrapper">
-        <a href="https://wa.me/{{ $page_content->where('id', 13)->first()->content }}" class="theme-btn-1 btn black-btn">CONTACT US</a>
+        <a href="https://wa.me/+62{{ $page_content->where('id', 13)->first()->content }}" class="theme-btn-1 btn black-btn">CONTACT US</a>
     </div>
 </div>
 </div>

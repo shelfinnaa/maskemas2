@@ -56,12 +56,11 @@
                                 <h1 dir="ltr">{{$product->name}}</h1>
                                 <hr>
                                 <div dir="ltr">
-                                <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
-                                    data-bs-toggle="modal" data-bs-target="#add_to_cart_modal" >
-                                    <i class="fab fa-whatsapp" ></i>
-                                    <span>Whatsapp</span>
-                                </a>
-                                <div>
+                                    <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Open in WhatsApp">
+                                        <i class="fab fa-whatsapp"></i>
+                                        <span>Whatsapp</span>
+                                    </a>
+                                </div>
                                 <hr>
                                 <!-- Shop Tab Start -->
                                 <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2">
