@@ -31,6 +31,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+
+Route::post('/details', [ProductController::class, 'productdetail'])->name('productdetail');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -69,6 +73,7 @@ Route::get('admin/products/{product}/delete', [ProductController::class, 'destro
 Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
     ->name('product.image.delete');
 Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('productdetails');
+
 
 Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit');
 Route::put('admin/content/{content}', [PageContentController::class, 'update'])->name('content.update');

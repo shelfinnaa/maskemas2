@@ -46,7 +46,18 @@ class ProductController extends Controller
     $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
     $page_content = PageContent::all();
 
-    return view('productdetails', compact('product', 'whatsAppLink', 'page_content'));
+    return view('productdetails', compact('product', 'page_content'));
+}
+
+public function productdetail(Request $request){
+    $productId = $request->input('product_id');
+    $product = Product::findOrFail($productId);
+    $customMessage = $product->custom_message;
+    $encodedMessage = urlencode($customMessage);
+    $phoneNumber = '8817001009';
+    $whatsAppLink = "https://wa.me/{$phoneNumber}?text={$encodedMessage}";
+    $page_content = PageContent::all();
+    return view('productdetail', compact('page_content', 'product', 'whatsAppLink'));
 }
 
     public function shop()

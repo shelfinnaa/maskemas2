@@ -147,13 +147,18 @@ $products = Product::all();
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
                         <li><a href="/shop">Shop</a>
-                            <ul class="sub-menu">
-                                @foreach ($products as $product)
-                                    <li><a
-                                            href="{{ route('productdetails', ['product' => $product->id]) }}">{{ $product->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <form action="{{ route('productdetail') }}" method="post">
+                                @csrf
+                                <ul class="sub-menu">
+                                    @foreach ($products as $product)
+                                        <li>
+                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="btn-link no-underline">
+                                                {{ $product->name }}
+                                            </button>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </form>
                         </li>
                         <li><a href="/contact">Contact</a></li>
                     </ul>

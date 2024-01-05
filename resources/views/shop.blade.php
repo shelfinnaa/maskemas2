@@ -35,19 +35,24 @@
                                     <!-- ltn__product-item -->
                                     <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
+                                            <form action="{{ route('productdetail') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
                                             <div class="product-img mt-4">
                                                 @if ($product->productImages->isNotEmpty())
-                                                    <a href="{{ route('productdetails', ['product' => $product->id]) }}">
+
                                                         <img src="{{ asset($product->productImages[0]->image_path) }}"
                                                             alt="{{ $product->name }}" style="width: 200px; height: 200px;">
-                                                    </a>
+
                                                 @else
                                                     <h5>No Image Added </h5>
                                                 @endif
                                             </div>
                                             <div class="product-info">
-                                                <h1 class="product-title m-2"><a href="">{{ $product->name }}</a></h1>
+                                                <h1 class="product-title m-2">{{ $product->name }}</h1>
+                                                <button type="submit" class="btn btn-link no-underline">See More</button>
                                             </div>
+                                        </form>
                                         </div>
                                     </div>
                                 @empty

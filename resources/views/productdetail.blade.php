@@ -56,7 +56,7 @@
                                 <h1 dir="ltr">{{$product->name}}</h1>
                                 <hr>
                                 <div dir="ltr">
-                                <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
+                                <a href="" class="theme-btn-1 btn btn-effect-1" title="Add to Cart"
                                     data-bs-toggle="modal" data-bs-target="#add_to_cart_modal" >
                                     <i class="fab fa-whatsapp" ></i>
                                     <span>Whatsapp</span>
@@ -128,21 +128,15 @@
             </div>
         </div>
     </div>
+</div>
+</div>
     <!-- SHOP DETAILS AREA END -->
 
-
-
-</div>
-</div>
-
 @include('footer')
-<!-- Body main wrapper end -->
-
 <!-- All JS Plugins -->
 <script src="js/plugins.js"></script>
 <!-- Main JS -->
 <script src="js/main.js"></script>
-
 
 </body>
 

@@ -7107,6 +7107,15 @@ ul.wp-block-latest-posts.is-grid.alignwide {
         background-color: #ffffff; /* Replace with your desired background color */
     }
 
+    .no-underline {
+        text-decoration: none !important;
+        color: #3b6d4c;
+    }
+
+    .no-underline:hover {
+        color: #6bbd87 /* Green text color on hover */
+    }
+
 /* ltn__shop-details-content-wrap */
 .ltn__shop-details-content-wrap {
   padding: 50px 50px 40px; }
