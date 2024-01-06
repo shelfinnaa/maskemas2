@@ -75,7 +75,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function showAdmin(Order $order)
     {
         $clients = User::all()->where('usertype','=','user');
         $products = Product::all();
@@ -128,18 +128,25 @@ class OrderController extends Controller
 
     }
 
-    public function search($tracking_id){
+    public function track(Request $request){
         $orders = Order::all();
 
         foreach($orders as $order){
-            if($tracking_id == $order->tracking_id){
+            if($request->tracking_id == $order->tracking_id){
                 $searched_order = $order;
+                return redirect()->route('order.showUser', ['order' => $searched_order]);
             }
         }
 
-        if($searched_order){
-            return redirect('track');
-        }
+        return redirect('track/')->with('message', 'Order was not Found');
+    }
+
+    public function showUser(Order $order){
+
+        $clients = User::all()->where('usertype','=','user');
+        $products = Product::all();
+        $statuses = OrderStatus::all();
+        return view('ordershow', compact('order', 'clients', 'products', 'statuses'));
     }
 
     /**

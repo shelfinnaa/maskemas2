@@ -58,7 +58,8 @@ $products = Product::all();
                                                     <li>
                                                         <form action="{{ route('productdetail') }}" method="post">
                                                             @csrf
-                                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="product-btn">
+                                                            <button type="submit" name="product_id"
+                                                                value="{{ $product->id }}" class="product-btn">
                                                                 {{ $product->name }}
                                                             </button>
                                                         </form>
@@ -69,6 +70,13 @@ $products = Product::all();
 
                                         <li><a href="/about">About</a></li>
                                         <li><a href="/">Home</a></li>
+                                        @auth
+                                            @if (auth()->user()->usertype == 'admin')
+                                                <li><a href="#">Admin</a></li>
+                                            @endif
+                                        @endauth
+
+
                                     </ul>
                                 </div>
                             </nav>
@@ -129,7 +137,8 @@ $products = Product::all();
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Logo" height="80"></a>
+                                    <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Logo"
+                                            height="80"></a>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +168,8 @@ $products = Product::all();
                                 <ul class="sub-menu">
                                     @foreach ($products as $product)
                                         <li>
-                                            <button type="submit" name="product_id" value="{{ $product->id }}" class="product-btn">
+                                            <button type="submit" name="product_id" value="{{ $product->id }}"
+                                                class="product-btn">
                                                 {{ $product->name }}
                                             </button>
                                         </li>

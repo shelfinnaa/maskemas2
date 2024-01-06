@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
+// Route::get('/login', [HomeController::class], 'login')->name('login');
 
 Route::post('/details', [ProductController::class, 'productdetail'])->name('productdetail');
 
@@ -103,15 +103,15 @@ Route::prefix('admin')->group(function(){
         Route::get('/',[OrderController::class,'index'])->name('order.index');
         Route::get('/create',[OrderController::class,'create'])->name('order.create');
         Route::post('/store',[OrderController::class,'store'])->name('order.store');
+        Route::get('/show/{order}', [OrderController::class, 'showAdmin'])->name('order.showAdmin');
         Route::get('/edit/{order}', [OrderController::class, 'edit'])->name('order.edit');
-        Route::get('/show/{order}', [OrderController::class, 'show'])->name('order.show');
         Route::put('/update/{order}', [OrderController::class, 'update'])->name('order.update');
         Route::get('/delete/{order}', [OrderController::class, 'destroy'])->name('order.delete');
     });
-
 });
 
 Route::get('/track', function(){return view('ordersearch');});
-Route::get('track/{order}', [OrderController::class, 'search'])->name('order.search');
+Route::get('/order', [OrderController::class, 'track'])->name('order.track');
+Route::get('/order/{order:tracking_id}', [OrderController::class, 'showUser'])->name('order.showUser');
 
 
