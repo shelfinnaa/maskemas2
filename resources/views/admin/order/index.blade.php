@@ -1,5 +1,4 @@
-@include('guestnavigation')
-@extends('admin.layouts.dashboard')
+@extends('admin.layouts.dashboard2')
 
 @section('main')
     <div class="container m-5">

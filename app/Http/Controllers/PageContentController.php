@@ -28,20 +28,12 @@ class PageContentController extends Controller
         return view('contact', compact('page_content'));
     }
 
-    public function admincontentdisplay()
-    {
-        $pageContents = PageContent::all();
-        $homeContents = $pageContents->where('page', 1);
-        $aboutContents = $pageContents->where('page', 2);
-        $contactContents = $pageContents->where('page', 3);
-        return view('admin.admindisplaypagecontent', compact('homeContents', 'aboutContents', 'contactContents'));
-    }
 
     public function edit(int $content_id)
     {
         try {
             $content = PageContent::findOrFail($content_id);
-            return view('admin.adminupdatecontent', compact('content'));
+            return view('admin.page_content.edit', compact('content'));
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             // Handle the case where no content is found, for example, redirect to a 404 page
             abort(404);
@@ -53,7 +45,11 @@ class PageContentController extends Controller
      */
     public function index()
     {
-        //
+        $pageContents = PageContent::all();
+        $homeContents = $pageContents->where('page', 1);
+        $aboutContents = $pageContents->where('page', 2);
+        $contactContents = $pageContents->where('page', 3);
+        return view('admin.page_content.index', compact('homeContents', 'aboutContents', 'contactContents'));
     }
 
     /**

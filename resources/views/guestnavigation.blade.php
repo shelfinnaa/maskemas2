@@ -72,7 +72,7 @@ $products = Product::all();
                                         <li><a href="/">Home</a></li>
                                         @auth
                                             @if (auth()->user()->usertype == 'admin')
-                                                <li><a href="#">Admin</a></li>
+                                                <li><a href="{{ route('admin.index') }}">Admin</a></li>
                                             @endif
                                         @endauth
 

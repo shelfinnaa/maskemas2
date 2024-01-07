@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PageContentController;
 use App\Http\Controllers\ProductTypeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,7 @@ Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])-
 Route::get('admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.delete');
 Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
     ->name('product.image.delete');
-Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('productdetails');
+Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('products.show');
 
 
 Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit');
@@ -90,6 +91,8 @@ Route::get('admin/producttypes/{productTypeID}/delete', [ProductTypeController::
 
 
 Route::prefix('admin')->group(function(){
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.index');
+
     Route::prefix('feedback')->group(function(){
         Route::get('/',[FeedbackController::class,'index'])->name('feedback.index');
         Route::get('/create',[FeedbackController::class,'create'])->name('feedback.create');

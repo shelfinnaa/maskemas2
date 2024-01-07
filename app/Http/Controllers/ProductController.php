@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.adminproductsdisplay', compact('products'));
+        return view('admin.category.index', compact('products'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.admincreateproduct');
+        return view('admin.category.create');
     }
 
     public function showAdminCreateProductType(Request $request)
@@ -33,7 +33,7 @@ class ProductController extends Controller
         // Retrieve the product_id from the request
         $product_id = $request->input('product_id');
 
-        return view('admin.admincreateproducttype', ['product_id' => $product_id]);
+        return view('admin.product.create', ['product_id' => $product_id]);
     }
 
 
@@ -102,7 +102,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect('admin/products')->with('message', 'Product Added Successfully');
+        return redirect()->route('admin.category.index')->with('message', 'Product Added Successfully');
     }
 
     /**
@@ -119,7 +119,7 @@ class ProductController extends Controller
     public function edit(int $product_id)
     {
         $product = Product::findorFail($product_id);
-        return view('admin.adminupdateproduct', compact('product'));
+        return view('admin.category.edit', compact('product'));
     }
 
     /**
@@ -154,11 +154,11 @@ class ProductController extends Controller
                 }
             }
 
-            return redirect('admin/products')->with('message', 'Product Updated Successfully');
+            return redirect()->route('admin.category.index')->with('message', 'Product Updated Successfully');
 
         } else {
 
-            return redirect('admin/products')->with('message', 'Product not found');
+            return redirect()->route('admin.category.index')->with('message', 'Product not found');
         }
     }
 
@@ -187,6 +187,6 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return redirect('admin/products')->with('message', 'Product Deleted Successfully');
+        return redirect()->route('admin.category.index')->with('message', 'Product Deleted Successfully');
     }
 }

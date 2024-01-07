@@ -1,6 +1,1 @@
-@include('guestnavigation')
-@extends('admin.layouts.dashboard')
-
-@section('main')
-    <h1>Admin Post Page</h1>
-@endsection
+<h1>admin post page</h1>
