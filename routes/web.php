@@ -51,11 +51,11 @@ Route::get('/about', [PageContentController::class, 'about'])->name('page.about'
 Route::get('/contact', [PageContentController::class, 'contact'])->name('contact.about');
 
 Route::get('/users', [UserController::class, 'index'])->name('admin.user');
-Route::get('admin/users/{user}/delete', [UserController::class, 'destroy'])->name('user.delete');
+Route::get('admin/users/{user}/delete', [UserController::class, 'destroy'])->middleware(['auth', 'admin'])->name('user.delete');
 
 
 Route::get('/shop', [ProductController::class, 'shop'])->name('products.edit');
-Route::get('/admin/content', [PageContentController::class, 'index'])->name('content.display');
+Route::get('/admin/content', [PageContentController::class, 'index'])->name('content.display')->middleware(['auth', 'admin']);
 
 Route::get('/productdetails', function () {
     return view('productdetails');
@@ -63,7 +63,7 @@ Route::get('/productdetails', function () {
 
 
 
-Route::get('/admincategoryindex', [ProductController::class, 'adminCategoryIndex'])->name('admin.category.index');
+Route::get('/admincategoryindex', [ProductController::class, 'adminCategoryIndex'])->name('admin.category.index')->middleware(['auth', 'admin']);
 
 Route::resource('admin/products', ProductController::class)->names([
     'index' => 'products.index',
@@ -71,27 +71,27 @@ Route::resource('admin/products', ProductController::class)->names([
     'store' => 'products.store',
     'edit' => 'products.edit',
     'update' => 'products.update'
-]);
+])->middleware(['auth', 'admin']);
 
-Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::get('admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.delete');
+Route::get('admin/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit')->middleware(['auth', 'admin']);
+Route::get('admin/products/{product}/delete', [ProductController::class, 'destroy'])->name('products.delete')->middleware(['auth', 'admin']);
 Route::get('product-image/{product_image_id}/delete', [ProductController::class, 'destroyImage'])
-    ->name('product.image.delete');
-Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('products.show');
+    ->name('product.image.delete')->middleware(['auth', 'admin']);
+Route::get('productdetails/{product}', [ProductController::class, 'productDetails'])->name('products.show')->middleware(['auth', 'admin']);
 
 
-Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit');
-Route::put('admin/content/{content}', [PageContentController::class, 'update'])->name('content.update');
+Route::get('admin/content/{content}/edit', [PageContentController::class, 'edit'])->name('content.edit')->middleware(['auth', 'admin']);
+Route::put('admin/content/{content}', [PageContentController::class, 'update'])->name('content.update')->middleware(['auth', 'admin']);
 
 Route::get('/admincreateproducttype', [ProductController::class, 'showAdminCreateProductType'])
-    ->name('admincreateproducttype');
+    ->name('admincreateproducttype')->middleware(['auth', 'admin']);
     Route::get('admin/producttype/{producttype_id}/edit', [ProductTypeController::class, 'edit'])
-    ->name('producttype.edit');
+    ->name('producttype.edit')->middleware(['auth', 'admin']);
 
 
-Route::post('admin/producttypes/create', [ProductTypeController::class, 'create'])->name('producttypes.create');
-Route::put('admin/producttypes/update/{productTypeID}', [ProductTypeController::class, 'update'])->name('producttypes.update');
-Route::get('admin/producttypes/{productTypeID}/delete', [ProductTypeController::class, 'destroy'])->name('producttypes.delete');
+Route::post('admin/producttypes/create', [ProductTypeController::class, 'create'])->name('producttypes.create')->middleware(['auth', 'admin']);
+Route::put('admin/producttypes/update/{productTypeID}', [ProductTypeController::class, 'update'])->name('producttypes.update')->middleware(['auth', 'admin']);
+Route::get('admin/producttypes/{productTypeID}/delete', [ProductTypeController::class, 'destroy'])->name('producttypes.delete')->middleware(['auth', 'admin']);
 
 
 Route::prefix('admin')->group(function(){
@@ -116,7 +116,7 @@ Route::prefix('admin')->group(function(){
         Route::put('/update/{order}', [OrderController::class, 'update'])->name('order.update');
         Route::get('/delete/{order}', [OrderController::class, 'destroy'])->name('order.delete');
     });
-});
+})->middleware(['auth', 'admin']);
 
 Route::get('/track', function(){return view('ordersearch');});
 Route::get('/order', [OrderController::class, 'track'])->name('order.track');
