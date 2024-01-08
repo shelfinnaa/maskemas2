@@ -40,11 +40,11 @@
                     value="{{ $order->total_price }}" required>
             </div>
 
-            <div class="form-group mt-4">
+            {{-- <div class="form-group mt-4">
                 <label>Contact Info</label>
                 <input type="string" name="contact_info" class="form-control" id="contact_info"
                     value="{{ $order->contact }}" placeholder="Not required">
-            </div>
+            </div> --}}
 
             <div class="form-group mt-4">
                 <label for="status">Status</label>

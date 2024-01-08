@@ -44,10 +44,10 @@
                     required>
             </div>
 
-            <div class="form-group mt-4">
+            {{-- <div class="form-group mt-4">
                 <label>Contact Info</label>
                 <input type="string" name="contact_info" class="form-control" id="contact_info" placeholder="Not required">
-            </div>
+            </div> --}}
 
             <div>
                 <button type="submit" class="mt-4 btn btn-primary">Add new</button>
