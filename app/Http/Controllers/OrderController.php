@@ -25,7 +25,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
-        $clients = User::all()->where('usertype','=','user');
+        $clients = User::all();
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.index', compact('orders', 'clients', 'products', 'statuses'));
@@ -37,7 +37,7 @@ class OrderController extends Controller
     public function create()
     {
         $orders = Order::all();
-        $clients = User::all()->where('usertype','=','user');
+        $clients = User::all();
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.create', compact('orders', 'clients', 'products', 'statuses'));
@@ -78,7 +78,7 @@ class OrderController extends Controller
      */
     public function showAdmin(Order $order)
     {
-        $clients = User::all()->where('usertype','=','user');
+        $clients = User::all();
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.show', compact('order', 'clients', 'products', 'statuses'));
@@ -89,7 +89,7 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        $clients = User::all()->where('usertype','=','user');
+        $clients = User::all();
         $products = Product::all();
         $statuses = OrderStatus::all();
         return view('admin.order.edit', compact('order', 'clients', 'products', 'statuses'));

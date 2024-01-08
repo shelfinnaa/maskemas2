@@ -9,11 +9,13 @@
         @method('PUT')
         <div class="form-group">
             <label for="client">Select Client</label>
-            <select name="client" id="client">
+            <select name="client" id="client" class="form-control">
                 <option value="" disabled selected>Select a Client</option>
                 @if ($clients->count() > 0)
                     @foreach ($clients as $client)
-                        <option value="<?= $client->id ?>"><?= $client->name ?></option>
+                        @if ($client->usertype == 'user')
+                            <option value="{{ $client->id }}">{{ $client->name }}</option>
+                        @endif
                     @endforeach
                 @else
                     <option value="" disabled>THERE ARE NO USERS</option>
@@ -29,13 +31,14 @@
 
         <div class="form-group">
             <label>Client Job Title</label>
-            <input type="text" name="person_title" id="person_title" class="form-control" placeholder="E.g. Founder" required
-                value="<?= $feedback->person_title ?>">>
+            <input type="text" name="person_title" id="person_title" class="form-control" placeholder="E.g. Founder"
+                required value="<?= $feedback->person_title ?>">>
         </div>
 
         <div class="form-group">
             <label>Client Feedback</label>
-            <textarea name="feedback" id="feedback" cols="30" class="form-control" rows="10" placeholder="Client Feedback" required><?= $feedback->feedback ?></textarea>
+            <textarea name="feedback" id="feedback" cols="30" class="form-control" rows="10"
+                placeholder="Client Feedback" required><?= $feedback->feedback ?></textarea>
         </div>
 
         <div class="form-group">
@@ -44,18 +47,18 @@
         </div>
         <div class="mt-3">
             @if ($feedback->person_image)
-                    <div class="position-relative d-inline-block">
-                        <img src="{{ asset($feedback->person_image) }}" style="width: 80px; height:80px; object-fit: cover;"
-                            class="me-4 border" alt="Img" />
-                        <a href="{{ route('feedback.image.delete', ['feedback' => $feedback->id]) }}">
-                            <div class="position-absolute top-0 end-30">
-                                <button type="button" class="close" aria-label="Close"
-                                    style="background-color: rgba(255, 255, 255, 0.7); border: none; padding: 2px 5px;">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        </a>
-                    </div>
+                <div class="position-relative d-inline-block">
+                    <img src="{{ asset($feedback->person_image) }}" style="width: 80px; height:80px; object-fit: cover;"
+                        class="me-4 border" alt="Img" />
+                    <a href="{{ route('feedback.image.delete', ['feedback' => $feedback->id]) }}">
+                        <div class="position-absolute top-0 end-30">
+                            <button type="button" class="close" aria-label="Close"
+                                style="background-color: rgba(255, 255, 255, 0.7); border: none; padding: 2px 5px;">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </a>
+                </div>
             @else
                 <h5>No Image Added </h5>
             @endif

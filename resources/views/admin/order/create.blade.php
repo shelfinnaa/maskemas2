@@ -9,14 +9,16 @@
             @csrf
             <div class="form-group mt-4">
                 <label for="client">Select Client</label>
-                <select name="client" class="form-control" id="client">
+                <select name="client" id="client" class="form-control">
                     <option value="" disabled selected>Select a Client</option>
                     @if ($clients->count() > 0)
                         @foreach ($clients as $client)
-                            <option value="<?= $client->id ?>"><?= $client->name ?></option>
+                            @if ($client->usertype == 'user')
+                                <option value="{{ $client->id }}">{{ $client->name }}</option>
+                            @endif
                         @endforeach
                     @else
-                        <option value="" disabled>THERE ARE NO CLIENTS</option>
+                        <option value="" disabled>THERE ARE NO USERS</option>
                     @endif
                 </select>
             </div>

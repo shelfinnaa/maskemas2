@@ -21,7 +21,9 @@
                 <option value="" disabled selected>Select a Client</option>
                 @if ($clients->count() > 0)
                     @foreach ($clients as $client)
-                        <option value="{{ $client->id }}">{{ $client->name }}</option>
+                        @if ($client->usertype == 'user')
+                            <option value="{{ $client->id }}">{{ $client->name }}</option>
+                        @endif
                     @endforeach
                 @else
                     <option value="" disabled>THERE ARE NO USERS</option>
@@ -36,12 +38,14 @@
 
         <div class="form-group">
             <label>Client Job Title</label>
-            <input type="text" name="person_title" id="person_title" placeholder="E.g. Founder" required class="form-control">
+            <input type="text" name="person_title" id="person_title" placeholder="E.g. Founder" required
+                class="form-control">
         </div>
 
         <div class="form-group">
             <label>Client Feedback</label>
-            <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Client Feedback" required class="form-control"></textarea>
+            <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Client Feedback" required
+                class="form-control"></textarea>
         </div>
 
         <div class="form-group">

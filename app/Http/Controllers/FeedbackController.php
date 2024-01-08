@@ -15,7 +15,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = Feedback::all();
-        $clients = collect(User::all()->where('usertype','=','user'));
+        $clients = collect(User::all());
         return view('admin.feedback.index', compact('feedbacks', 'clients'));
     }
 
@@ -25,7 +25,7 @@ class FeedbackController extends Controller
     public function create()
     {
         $feedbacks = Feedback::all();
-        $clients = collect(User::all()->where('usertype','=','user'));
+        $clients = collect(User::all());
         return view('admin.feedback.create', compact('feedbacks', 'clients'));
     }
 
