@@ -29,13 +29,13 @@
 
         <div class="form-group">
             <label>Client Job Title</label>
-            <input type="text" name="person_title" id="person_title" placeholder="E.g. Founder" required
+            <input type="text" name="person_title" id="person_title" class="form-control" placeholder="E.g. Founder" required
                 value="<?= $feedback->person_title ?>">>
         </div>
 
         <div class="form-group">
             <label>Client Feedback</label>
-            <textarea name="feedback" id="feedback" cols="30" rows="10" placeholder="Client Feedback" required><?= $feedback->feedback ?></textarea>
+            <textarea name="feedback" id="feedback" cols="30" class="form-control" rows="10" placeholder="Client Feedback" required><?= $feedback->feedback ?></textarea>
         </div>
 
         <div class="form-group">

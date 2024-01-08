@@ -27,7 +27,9 @@
                 @foreach ($feedbacks as $feedback)
                     <tr>
                         <td><?= $feedback->id ?></td>
-                        <td>{{ $feedback->person_name }} | {{ $feedback->person_title }}</td>
+                        <td> <img src="{{ asset($feedback->person_image) }}"
+                                style="width: 80px; height:80px; object-fit: cover;" class="me-4 border"
+                                alt="Img" /><br>{{ $feedback->person_name }} | {{ $feedback->person_title }}</td>
                         <td>{{ $clients[$feedback->client - 1]->name }}</td>
                         <td><?= $feedback->feedback ?></td>
                         <td>

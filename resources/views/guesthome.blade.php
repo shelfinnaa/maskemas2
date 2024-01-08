@@ -226,8 +226,9 @@
                 @foreach ($feedbacks as $testimony)
                     <div class="col-lg-12">
                         <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                            <div class="ltn__testimoni-img">
-                                <img src="img/testimonial/6.jpg" alt="#">
+                            <div class="ltn__testimoni-img overflow-hidden">
+                                <img src="{{ asset($testimony->person_image) }}"
+                                class="me-4 border" alt="Img" style="aspect-ratio:1/1; object-fit: cover;"/>
                             </div>
                             <div class="ltn__testimoni-info">
                             <p class="truncated-text overflow-hidden fixed-height-container">
