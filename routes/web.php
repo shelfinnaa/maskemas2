@@ -100,6 +100,7 @@ Route::prefix('admin')->group(function(){
         Route::get('/edit/{feedback}', [FeedbackController::class, 'edit'])->name('feedback.edit');
         Route::put('/update/{feedback}', [FeedbackController::class, 'update'])->name('feedback.update');
         Route::get('/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.delete');
+        Route::get('/delete/{feedback}/image', [FeedbackController::class, 'destroyImage'])->name('feedback.image.delete');
     });
 
     Route::prefix('order')->group(function(){

@@ -23,7 +23,7 @@
                     <th>Client</th>
                     <th>Product</th>
                     <th>Quantity</th>
-                    <th>Total Price</th>
+                    <th>Price Per Item</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -33,15 +33,15 @@
                         <td>{{ $clients[$order->client - 1]->name }}</td>
                         <td>{{ $products[$order->product - 1]->name }}</td>
                         <td>x{{ $order->quantity }}</td>
-                        <td>IDR {{ $order->total_price }} </td>
+                        <td>IDR {{ $order->price }} </td>
                         <td>{{ $statuses[$order->status - 1]->name }}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ url('admin/order/show/' . $order->id) }}"
-                                role="button">View Details</a>
+                            {{-- <a class="btn btn-sm btn-info" href="{{ url('admin/order/show/' . $order->id) }}"
+                                role="button">View Details</a> --}}
                             <a class="btn btn-sm btn-warning" href="{{ url('admin/order/edit/' . $order->id) }}"
                                 role="button">Update</a>
                             <a class="btn btn-sm btn-danger" {{-- onClick="return confirm('Are you sure, you want to delete this data?')"  --}}
-                                href="{{ url('admin/order/delete' . $order->id) }}" role="button">Delete</a>
+                                href="{{ url('admin/order/delete/' . $order->id) }}" role="button">Delete</a>
                         </td>
                     </tr>
                 @endforeach

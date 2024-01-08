@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <label>Client Name</label>
-            <input type="text" name="person_name" id="person_name" placeholder="Name" required
+            <input type="text" name="person_name" id="person_name" placeholder="Name" required class="form-control"
                 value=<?= $feedback->person_name ?>>
         </div>
 
@@ -39,12 +39,32 @@
         </div>
 
         <div class="form-group">
-            <label class="mt-3">Client Images</label>
+            <label class="mt-3">Client Image</label>
             <input type="file" name="person_image" class="form-control" />
         </div>
+        <div class="mt-3">
+            @if ($feedback->person_image)
+                    <div class="position-relative d-inline-block">
+                        <img src="{{ asset($feedback->person_image) }}" style="width: 80px; height:80px; object-fit: cover;"
+                            class="me-4 border" alt="Img" />
+                        <a href="{{ route('feedback.image.delete', ['feedback' => $feedback->id]) }}">
+                            <div class="position-absolute top-0 end-30">
+                                <button type="button" class="close" aria-label="Close"
+                                    style="background-color: rgba(255, 255, 255, 0.7); border: none; padding: 2px 5px;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </a>
+                    </div>
+            @else
+                <h5>No Image Added </h5>
+            @endif
+        </div>
+
+
 
         <div>
-            <button type="submit">Edit <?= $feedback->person_name ?>'s Feedback</button>
+            <button type="submit" class="btn btn-primary mt-5">Edit <?= $feedback->person_name ?>'s Feedback</button>
         </div>
     </form>
 @endsection

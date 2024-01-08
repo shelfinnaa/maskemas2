@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use App\Models\Product;
 use App\Models\PageContent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -13,7 +15,9 @@ class PageContentController extends Controller
     {
         $page_content = PageContent::all();
         $products = Product::all();
-        return view('guesthome', compact('page_content', 'products'));
+        $feedbacks = Feedback::all();
+        $clients = User::all();
+        return view('guesthome', compact('page_content', 'products', 'feedbacks', 'clients'));
     }
 
     public function about()

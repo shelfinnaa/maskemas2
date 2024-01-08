@@ -43,43 +43,36 @@
 <body>
 
     <div id="sidebar" class="m-auto">
-        <h2>Maskemas</h2>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('feedback.index') }}">
-                    Feedback
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('products.index') }}">
-                    Categories
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    Product
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('order.index') }}">
-                    Orders
-                </a>
-            </li>
-        </ul>
+        <div>
+            <h2><a href="{{ route('page.home') }}">Maskemas</a></h2>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('feedback.index') }}">
+                        Feedback
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('products.index') }}">
+                        Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('order.index') }}">
+                        Orders
+                    </a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 
     <div id="content">
-        <h2>Main Content</h2>
+        {{-- <h2>Main Content</h2> --}}
         @section('main')
         @show
     </div>

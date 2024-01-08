@@ -1,5 +1,5 @@
-@extends('admin.layouts.dashboard')
+@extends('admin.layouts.dashboard2')
 
 @section('main')
-    <h1>Admin Post Page</h1>
+    <h1>Welcome to the admin Dashboard</h1>
 @endsection

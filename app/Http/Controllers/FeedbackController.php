@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Feedback;
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -14,7 +15,7 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = Feedback::all();
-        $clients = collect(User::all());
+        $clients = collect(User::all()->where('usertype','=','user'));
         return view('admin.feedback.index', compact('feedbacks', 'clients'));
     }
 
@@ -24,7 +25,7 @@ class FeedbackController extends Controller
     public function create()
     {
         $feedbacks = Feedback::all();
-        $clients = User::all();
+        $clients = collect(User::all()->where('usertype','=','user'));
         return view('admin.feedback.create', compact('feedbacks', 'clients'));
     }
 
@@ -57,7 +58,9 @@ class FeedbackController extends Controller
             $imageFile->move($uploadPath, $filename);
             $finalImagePathName = $uploadPath . $filename;
 
-            $validateData['person_image'] = $finalImagePathName;
+            $feedback->update([
+                'person_image' => $finalImagePathName
+            ]);
         }
 
         return redirect('admin/feedback/')->with('message', 'Feedback Added Successfully');
@@ -136,5 +139,17 @@ class FeedbackController extends Controller
         $feedback = Feedback::findorFail($feedback_id);
         $feedback->delete();
         return redirect('admin/feedback/')->with('message', 'Feedback Deleted Successfully');
+    }
+    public function destroyImage($feedback_id)
+    {
+        $feedback = Feedback::findorFail($feedback_id);
+        if (File::exists($feedback->person_image)) {
+            File::delete($feedback->person_image);
+            $feedback->update([
+                'person_image' => null
+            ]);
+        }
+        return redirect()->back()->with('message', 'Client Image Deleted Successfully');
+
     }
 }

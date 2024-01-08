@@ -1,4 +1,25 @@
-@include('guestnavigation')
+@extends('guestnavigation')
+
+@section('style')
+<style>
+        .fixed-height-container {
+            height: 4.5em; /* Adjust the height as needed */
+            overflow: hidden;
+        }
+
+        .truncated-text {
+            margin: 0; /* Reset margin to avoid extra space */
+            line-height: 1.5; /* Adjust line height as needed */
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            -webkit-line-clamp: 3; /* Number of lines to show */
+            text-overflow: ellipsis;
+        }
+</style>
+@endsection
+
+@section('main')
 <!-- SLIDER AREA START (slider-3) -->
 <div class="ltn__slider-area ltn__slider-3  section-bg-1">
     <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
@@ -10,10 +31,13 @@
                         <div class="col-lg-12 align-self-center">
                             <div class="slide-item-info">
                                 <div class="slide-item-info-inner ltn__slide-animation">
-                                    <h6 class="slide-sub-title animated">{{ $page_content->where('id', 1)->first()->content }}</h6>
-                                    <h1 class="slide-title animated ">{{ $page_content->where('id', 2)->first()->content }}</h1>
+                                    <h6 class="slide-sub-title animated">
+                                        {{ $page_content->where('id', 1)->first()->content }}</h6>
+                                    <h1 class="slide-title animated ">
+                                        {{ $page_content->where('id', 2)->first()->content }}</h1>
                                     <div class="btn-wrapper animated">
-                                        <a href="/shop" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore Products</a>
+                                        <a href="/shop" class="theme-btn-1 btn btn-effect-1 text-uppercase">Explore
+                                            Products</a>
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +57,8 @@
                         <div class="col-lg-12 align-self-center">
                             <div class="slide-item-info">
                                 <div class="slide-item-info-inner ltn__slide-animation">
-                                    <h6 class="slide-sub-title animated">{{ $page_content->where('id', 3)->first()->content }} </h6>
+                                    <h6 class="slide-sub-title animated">
+                                        {{ $page_content->where('id', 3)->first()->content }} </h6>
                                     <h1 class="slide-title animated ">
                                         {{ $page_content->where('id', 4)->first()->content }}</h1>
                                     <div class="slide-brief animated">
@@ -72,21 +97,24 @@
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}"
+                                alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}"
+                                alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}"
+                                alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
@@ -102,7 +130,8 @@
             <div class="col-lg-6 col-md-6">
                 <div class="ltn__banner-item">
                     <div class="ltn__banner-img">
-                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}" alt="Banner Image"></a>
+                        <a href="shop.html"><img src="{{ $page_content->where('id', 21)->first()->content }}"
+                                alt="Banner Image"></a>
                     </div>
                 </div>
             </div>
@@ -111,14 +140,16 @@
                     <div class="col-lg-12">
                         <div class="ltn__banner-item">
                             <div class="ltn__banner-img">
-                                <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}" alt="Banner Image"></a>
+                                <a href="shop.html"><img src="{{ $page_content->where('id', 19)->first()->content }}"
+                                        alt="Banner Image"></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-12">
                         <div class="ltn__banner-item">
                             <div class="ltn__banner-img">
-                                <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}" alt="Banner Image"></a>
+                                <a href="shop.html"><img src="{{ $page_content->where('id', 20)->first()->content }}"
+                                        alt="Banner Image"></a>
                             </div>
                         </div>
                     </div>
@@ -134,154 +165,94 @@
 <div class="ltn__product-tab-area ltn__product-gutter pt-85 pb-70">
     <div class="container">
         @if ($products->isNotEmpty())
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title-area ltn__section-title-2 text-center">
-                    <h1 class="section-title">Our Products</h1>
-                    @endif
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade active show" id="liton_tab_3_1">
-                        <div class="ltn__product-tab-content-inner">
-                            <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
-                                <!-- ltn__product-item -->
-                                @forelse($products as $product)
-                                    <!-- ltn__product-item -->
-                                    <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
-                                        <div class="ltn__product-item ltn__product-item-3 text-center">
-                                            <div class="product-img mt-4">
-                                                @if ($product->productImages->isNotEmpty())
-                                                    <a
-                                                        href="{{ route('productdetails', ['product' => $product->id]) }}">
-                                                        <img src="{{ asset($product->productImages[0]->image_path) }}"
-                                                            alt="{{ $product->name }}"
-                                                            style="width: 200px; height: 200px;">
-                                                    </a>
-                                                @else
-                                                    <h5>No Image Added </h5>
-                                                @endif
-                                            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h1 class="section-title">Our Products</h1>
+        @endif
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active show" id="liton_tab_3_1">
+            <div class="ltn__product-tab-content-inner">
+                <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+                    <!-- ltn__product-item -->
+                    @forelse($products as $product)
+                        <!-- ltn__product-item -->
+                        <div class="col-xl-3 col-lg-4 col-sm-6 col-6">
+                            <div class="ltn__product-item ltn__product-item-3 text-center">
+                                <div class="product-img mt-4">
+                                    @if ($product->productImages->isNotEmpty())
+                                        <a href="{{ route('products.show', ['product' => $product->id]) }}">
+                                            <img src="{{ asset($product->productImages[0]->image_path) }}"
+                                                alt="{{ $product->name }}" style="width: 200px; height: 200px;">
+                                        </a>
+                                    @else
+                                        <h5>No Image Added </h5>
+                                    @endif
+                                </div>
 
-                                            <div class="product-info">
-                                                <h1 class="product-title m-2"><a
-                                                        href="">{{ $product->name }}</a>
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @empty
-                                @endforelse
+                                <div class="product-info">
+                                    <h1 class="product-title m-2"><a href="">{{ $product->name }}</a>
+                                    </h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 <!-- PRODUCT TAB AREA END -->
 
 <!-- TESTIMONIAL AREA START (testimonial-4) -->
-<div class="ltn__testimonial-area section-bg-1 pt-290 pb-70">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title-area ltn__section-title-2 text-center">
-                    <h6 class="section-subtitle ltn__secondary-color">// Testimonials</h6>
-                    <h1 class="section-title">Clients Feedbacks<span>.</span></h1>
-                </div>
-            </div>
-        </div>
-        <div class="row ltn__testimonial-slider-3-active slick-arrow-1 slick-arrow-1-inner">
-            <div class="col-lg-12">
-                <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                    <div class="ltn__testimoni-img">
-                        <img src="img/testimonial/6.jpg" alt="#">
-                    </div>
-                    <div class="ltn__testimoni-info">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. </p>
-                        <h4>Rosalina D. William</h4>
-                        <h6>Founder</h6>
-                    </div>
-                    <div class="ltn__testimoni-bg-icon">
-                        <i class="far fa-comments"></i>
+@if ($feedbacks->isNotEmpty())
+    <div class="ltn__testimonial-area section-bg-1 pt-290 pb-70">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title-area ltn__section-title-2 text-center">
+                        <h6 class="section-subtitle ltn__secondary-color">// Testimonials</h6>
+                        <h1 class="section-title">Clients Feedbacks<span>.</span></h1>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                    <div class="ltn__testimoni-img">
-                        <img src="img/testimonial/7.jpg" alt="#">
+
+            <div class="row ltn__testimonial-slider-3-active slick-arrow-1 slick-arrow-1-inner">
+                @foreach ($feedbacks as $testimony)
+                    <div class="col-lg-12">
+                        <div class="ltn__testimonial-item ltn__testimonial-item-4">
+                            <div class="ltn__testimoni-img">
+                                <img src="img/testimonial/6.jpg" alt="#">
+                            </div>
+                            <div class="ltn__testimoni-info">
+                            <p class="truncated-text overflow-hidden fixed-height-container">
+                                {{ $testimony->feedback }} </p>
+                                <h4>{{ $testimony->person_name }}</h4>
+                                <h6>{{ $testimony->person_title }} of {{ $clients[$testimony->client - 1]->name }}</h6>
+                            </div>
+                            <div class="ltn__testimoni-bg-icon">
+                                <i class="far fa-comments"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="ltn__testimoni-info">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. </p>
-                        <h4>Rosalina D. William</h4>
-                        <h6>Founder</h6>
-                    </div>
-                    <div class="ltn__testimoni-bg-icon">
-                        <i class="far fa-comments"></i>
-                    </div>
-                </div>
+                @endforeach
+                <!--  -->
             </div>
-            <div class="col-lg-12">
-                <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                    <div class="ltn__testimoni-img">
-                        <img src="img/testimonial/1.jpg" alt="#">
-                    </div>
-                    <div class="ltn__testimoni-info">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. </p>
-                        <h4>Rosalina D. William</h4>
-                        <h6>Founder</h6>
-                    </div>
-                    <div class="ltn__testimoni-bg-icon">
-                        <i class="far fa-comments"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                    <div class="ltn__testimoni-img">
-                        <img src="img/testimonial/2.jpg" alt="#">
-                    </div>
-                    <div class="ltn__testimoni-info">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. </p>
-                        <h4>Rosalina D. William</h4>
-                        <h6>Founder</h6>
-                    </div>
-                    <div class="ltn__testimoni-bg-icon">
-                        <i class="far fa-comments"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="ltn__testimonial-item ltn__testimonial-item-4">
-                    <div class="ltn__testimoni-img">
-                        <img src="img/testimonial/5.jpg" alt="#">
-                    </div>
-                    <div class="ltn__testimoni-info">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. </p>
-                        <h4>Rosalina D. William</h4>
-                        <h6>Founder</h6>
-                    </div>
-                    <div class="ltn__testimoni-bg-icon">
-                        <i class="far fa-comments"></i>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
         </div>
     </div>
-</div>
+@endif
+
 <!-- TESTIMONIAL AREA END -->
 
 <!-- FEATURE AREA START ( Feature - 3) -->
 
 <!-- FEATURE AREA END -->
+
 @include('footer')
 <!-- FOOTER AREA END -->
 
@@ -306,3 +277,4 @@
 </body>
 
 </html>
+@endsection

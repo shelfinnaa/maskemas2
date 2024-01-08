@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->string('tracking_id')->nullable();
-            $table->decimal('price')->default(0.0);
-            $table->integer('quantity');
-            $table->decimal('total_price');
+            $table->decimal('price' );
+            $table->bigInteger('quantity');
+            $table->decimal('total_price', 10,2)->nullable();
             $table->string('estimated_arrival')->nullable();
 
             $table-> unsignedBigInteger('product');

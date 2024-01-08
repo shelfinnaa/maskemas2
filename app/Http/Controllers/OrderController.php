@@ -52,8 +52,8 @@ class OrderController extends Controller
         $validatedData = $request->validate([
             'client' => 'required|exists:users,id',
             'product' => 'required|exists:products,id',
-            'quantity' => 'numeric|required',
-            'total_price' => 'decimal:0,2|required',
+            'quantity' => 'decimal:0,2|required',
+            'price' => 'decimal:0,2|required',
         ]);
 
         // Create a new product using Eloquent
@@ -61,12 +61,13 @@ class OrderController extends Controller
             'client' => $validatedData['client'],
             'product' => $validatedData['product'],
             'quantity' => $validatedData['quantity'],
-            'total_price' => $validatedData['total_price'],
+            'price' => $validatedData['price'],
             'status' => 1,
         ]);
 
         $order->update([
-            'tracking_id' => OrderController::generateTrackingCode($order->created_at, $order->client, $order->product)
+            'tracking_id' => OrderController::generateTrackingCode($order->created_at, $order->client, $order->product),
+            'total_price' => $order->quantity * $order->price
         ]);
 
         return redirect('admin/order/')->with('message', 'Order Added Successfully');
@@ -103,8 +104,8 @@ class OrderController extends Controller
         $validatedData = $request->validate([
             'client' => 'required|exists:users,id',
             'product' => 'required|exists:products,id',
-            'quantity' => 'numeric|required',
-            'total_price' => 'decimal:0,2|required',
+            'quantity' => 'decimal:10,2|required',
+            'total_price' => 'decimal:10,2|required',
             'status' => 'required'
         ]);
 

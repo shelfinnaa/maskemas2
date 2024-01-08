@@ -26,6 +26,8 @@ $products = Product::all();
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    @section('style')
+    @show
 
 </head>
 
@@ -137,7 +139,7 @@ $products = Product::all();
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="Logo"
+                                    <a href="{{ route('page.home') }}"><img src="{{ asset('img/logo.png') }}" alt="Logo"
                                             height="80"></a>
                                 </div>
                             </div>
@@ -219,3 +221,5 @@ $products = Product::all();
             </div>
         </div>
         <!-- Utilize Mobile Menu End -->
+        @section('main')
+        @show

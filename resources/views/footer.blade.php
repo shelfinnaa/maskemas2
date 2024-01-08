@@ -52,25 +52,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-2 col-md-6 col-sm-6 col-12">
-                    <div class="footer-widget footer-menu-widget clearfix">
+                {{-- <div class="col-xl-2 col-md-6 col-sm-6 col-12"> --}}
+                    {{-- <div class="footer-widget footer-menu-widget clearfix">
                         <h4 class="footer-title">Services</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="order-tracking.html">Order tracking</a></li>
+                                <li><a href="/track">Order tracking</a></li>
                                 <li><a href="/login">Login</a></li>
                                 <li><a href="account.html">My account</a></li>
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-xl-2 col-md-6 col-sm-6 col-12">
                     <div class="footer-widget footer-menu-widget clearfix">
                         <h4 class="footer-title">Customer Care</h4>
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="account.html">My account</a></li>
-                                <li><a href="order-tracking.html">Order tracking</a></li>
+                                {{-- <li><a href="account.html">My account</a></li> --}}
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="/track">Order tracking</a></li>
                                 <li><a href="/contact">Contact us</a></li>
                             </ul>
                         </div>

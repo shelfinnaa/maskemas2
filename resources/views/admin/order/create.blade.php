@@ -38,8 +38,8 @@
             </div>
 
             <div class="form-group mt-4">
-                <label>Total Price (IDR)</label>
-                <input type="number" name="total_price" class="form-control" id="total_price" placeholder="Insert price"
+                <label>Price per Item (IDR)</label>
+                <input type="number" name="price" class="form-control" id="price" placeholder="Insert price"
                     required>
             </div>
 

@@ -3,7 +3,9 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6 text-center">
-            <h1 class="text-primary">Track Your Order</h1>
+            <div class="section-title-area ltn__section-title-2 text-center">
+                <h1 class="section-title">Track your Order</h1>
+            </div>
             @if (session('message'))
                 <div class="alert alert-danger alert-sm">{{ session('message') }}</div>
             @endif
