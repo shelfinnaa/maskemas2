@@ -10,45 +10,47 @@
             </div>
         </div>
 
-        <body class="m-5">
-            @if (session('message'))
-                <div class="alert alert-success alert-sm">{{ session('message') }}</div>
+        @if (session('message'))
+            <div class="alert alert-success alert-sm">{{ session('message') }}</div>
+        @endif
+
+
+        <table class="table table-striped">
+            @if ($users->isNotEmpty())
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Privilege</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
             @endif
-
-
-            <table class="table table-striped">
-                @if ($users->isNotEmpty())
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Delete</th>
-                        </tr>
-                    </thead>
-                @endif
-                <tbody>
-                    @forelse($users as $user)
-                        <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>
+            <tbody>
+                @forelse($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->usertype }}</td>
+                        <td>
+                            @if ($user->usertype == 'user')
                                 <a class="btn btn-sm btn-danger"
                                     onClick="return confirm('Are you sure, you want to delete this user?')"
                                     href="{{ route('user.delete', $user->id) }}" role="button">Delete</a>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                        <tr colspan="7">No Users Available</th>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                            @endif
 
-            </form>
-        @endsection
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                    <tr colspan="7">No Users Available</th>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
 
-    </body>
+        </form>
+    @endsection
 </div>
 
 

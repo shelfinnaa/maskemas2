@@ -47,7 +47,7 @@
             <h2><a href="{{ route('page.home') }}">Maskemas</a></h2>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('admin.user') }}">
                         Users
                     </a>
                 </li>
