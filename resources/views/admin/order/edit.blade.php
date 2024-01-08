@@ -5,6 +5,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('order.update', ['order' => $order->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -35,9 +44,9 @@
             </div>
 
             <div class="form-group mt-4">
-                <label>Total Price (IDR)</label>
-                <input type="number" name="total_price" class="form-control" id="total_price" placeholder="Insert price"
-                    value="{{ $order->total_price }}" required>
+                <label>Price per Item (IDR)</label>
+                <input type="number" name="price" class="form-control" id="price" placeholder="Insert price"
+                    required value="{{ $order->price }}">
             </div>
 
             {{-- <div class="form-group mt-4">

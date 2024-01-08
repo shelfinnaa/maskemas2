@@ -17,7 +17,8 @@ class Order extends Model
         'quantity',
         'estimated_arrival',
         'client',
-        'product'
+        'product',
+        'status'
     ];
 
     public function client(): BelongsTo

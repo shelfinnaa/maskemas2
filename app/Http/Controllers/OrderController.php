@@ -104,8 +104,8 @@ class OrderController extends Controller
         $validatedData = $request->validate([
             'client' => 'required|exists:users,id',
             'product' => 'required|exists:products,id',
-            'quantity' => 'decimal:10,2|required',
-            'total_price' => 'decimal:10,2|required',
+            'quantity' => 'decimal:0,2|required',
+            'price' => 'decimal:0,2|required',
             'status' => 'required'
         ]);
 
@@ -117,7 +117,7 @@ class OrderController extends Controller
                 'client' => $validatedData['client'],
                 'product' => $validatedData['product'],
                 'quantity' => $validatedData['quantity'],
-                'total_price' => $validatedData['total_price'],
+                'price' => $validatedData['price'],
                 'status' => $validatedData['status']
             ]);
 
