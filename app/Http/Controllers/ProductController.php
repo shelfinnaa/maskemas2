@@ -102,7 +102,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('admin.category.index')->with('message', 'Product Added Successfully');
+        return redirect()->route('products.index')->with('message', 'Product Added Successfully');
     }
 
     /**
@@ -154,11 +154,11 @@ class ProductController extends Controller
                 }
             }
 
-            return redirect()->route('admin.category.index')->with('message', 'Product Updated Successfully');
+            return redirect()->route('products.index')->with('message', 'Product Updated Successfully');
 
         } else {
 
-            return redirect()->route('admin.category.index')->with('message', 'Product not found');
+            return redirect()->route('products.index')->with('message', 'Product not found');
         }
     }
 
@@ -187,6 +187,8 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return redirect()->route('admin.category.index')->with('message', 'Product Deleted Successfully');
+        return redirect()->route('products.index')->with('message', 'Product Deleted Successfully');
     }
+
+
 }

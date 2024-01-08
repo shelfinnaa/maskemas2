@@ -33,6 +33,7 @@ class PageContentController extends Controller
     }
 
 
+
     public function edit(int $content_id)
     {
         try {
@@ -55,6 +56,7 @@ class PageContentController extends Controller
         $contactContents = $pageContents->where('page', 3);
         return view('admin.page_content.index', compact('homeContents', 'aboutContents', 'contactContents'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -125,13 +127,23 @@ class PageContentController extends Controller
                 }
             }
 
-            return redirect('admin/content')->with('message', 'Content Updated Successfully');
+            return redirect()->route('content.display')->with('message', 'Content Updated Successfully');
 
         } else {
 
-            return redirect('admin/content')->with('message', 'Content not found');
+            return redirect()->route('content.display')->with('message', 'Content not found');
         }
     }
+
+    public function admincontentdisplay()
+{
+    $pageContents = PageContent::all();
+        $homeContents = $pageContents->where('page', 1);
+        $aboutContents = $pageContents->where('page', 2);
+        $contactContents = $pageContents->where('page', 3);
+        return view('admin.page_content.index', compact('homeContents', 'aboutContents', 'contactContents'));
+
+}
 
     /**
      * Remove the specified resource from storage.

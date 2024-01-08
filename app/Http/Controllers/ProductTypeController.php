@@ -79,7 +79,7 @@ class ProductTypeController extends Controller
 
         $producttype = ProductType::findOrFail($producttype_id);
 
-        return view('admin.adminupdateproducttype', [ 'producttype' => $producttype]);
+        return view('admin.product.edit', [ 'producttype' => $producttype]);
 
     }
 

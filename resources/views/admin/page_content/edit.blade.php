@@ -20,8 +20,9 @@
             </div>
             <div class="form-group">
                 <label for="content" class="mt-3">Content</label>
-                <textarea class="form-control mt-3" id="content" name="content" rows="2" required>{{ $content->content }}</textarea>
+                <textarea class="form-control mt-3" id="content" name="content" rows="4" style="margin: 0; padding: 0;" required>{{ $content->content }}</textarea>
             </div>
+
             <div class="form-group">
                 <label class="mt-3">Image</label>
                 <input type="file" name="image" class="form-control" />
