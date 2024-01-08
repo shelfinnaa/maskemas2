@@ -56,7 +56,7 @@
                                 <h1 dir="ltr">{{$product->name}}</h1>
                                 <hr>
                                 <div dir="ltr">
-                                    <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Open in WhatsApp">
+                                    <a href="{{ $whatsAppLink }}" class="theme-btn-1 btn btn-effect-1" title="Open in WhatsApp" target="_blank">
                                         <i class="fab fa-whatsapp"></i>
                                         <span>Whatsapp</span>
                                     </a>
