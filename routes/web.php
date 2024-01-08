@@ -55,11 +55,15 @@ Route::get('admin/users/{user}/delete', [UserController::class, 'destroy'])->nam
 
 
 Route::get('/shop', [ProductController::class, 'shop'])->name('products.edit');
-Route::get('/admin/content', [PageContentController::class, 'admincontentdisplay'])->name('content.display');
+Route::get('/admin/content', [PageContentController::class, 'index'])->name('content.display');
 
 Route::get('/productdetails', function () {
     return view('productdetails');
 });
+
+
+
+Route::get('/admincategoryindex', [ProductController::class, 'adminCategoryIndex'])->name('admin.category.index');
 
 Route::resource('admin/products', ProductController::class)->names([
     'index' => 'products.index',
