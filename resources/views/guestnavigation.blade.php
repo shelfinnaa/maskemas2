@@ -92,7 +92,7 @@ $products = Product::all();
                                     @auth
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            <li><a href="#">My Account</a></li>
+
                                             <li><a href="{{ route('logout') }}"
                                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                             </li>
@@ -139,8 +139,8 @@ $products = Product::all();
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="{{ route('page.home') }}"><img src="{{ asset('img/logo.png') }}" alt="Logo"
-                                            height="80"></a>
+                                    <a href="{{ route('page.home') }}"><img src="{{ asset('img/logo.png') }}"
+                                            alt="Logo" height="80"></a>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +162,11 @@ $products = Product::all();
                 </div>
                 <div class="ltn__utilize-menu">
                     <ul>
+                        @auth
+                            @if (auth()->user()->usertype == 'admin')
+                                <li><a href="{{ route('admin.index') }}">Admin</a></li>
+                            @endif
+                        @endauth
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
                         <li><a href="/shop">Shop</a>
@@ -193,15 +198,6 @@ $products = Product::all();
                                         <i class="far fa-user"></i>
                                     </span>
                                     Logout
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="/myaccount" title="My Account">
-                                    <span class="utilize-btn-icon">
-                                        <i class="far fa-user"></i>
-                                    </span>
-                                    My Account
                                 </a>
                             </li>
                         @else
