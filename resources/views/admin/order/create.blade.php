@@ -35,6 +35,7 @@
                 <label>Quantity</label>
                 <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Insert quantity"
                     required>
+
             </div>
 
             <div class="form-group mt-4">

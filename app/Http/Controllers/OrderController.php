@@ -129,6 +129,15 @@ class OrderController extends Controller
 
     }
 
+    public function checkOrders(){
+        $user = auth()->user();
+        $orders = Order::all()->where('client','=',$user->id);
+        $products = Product::all();
+        $statuses = OrderStatus::all();
+
+        return view('ordercheck', compact('user', 'orders', 'products', 'statuses'));
+    }
+
     public function track(Request $request){
         $orders = Order::all();
 

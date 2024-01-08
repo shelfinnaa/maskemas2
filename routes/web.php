@@ -121,5 +121,5 @@ Route::prefix('admin')->group(function(){
 Route::get('/track', function(){return view('ordersearch');});
 Route::get('/order', [OrderController::class, 'track'])->name('order.track');
 Route::get('/order/{order:tracking_id}', [OrderController::class, 'showUser'])->name('order.showUser');
-
+Route::get('/checkout', [OrderController::class, 'checkOrders'])->name('orders.check');
 
