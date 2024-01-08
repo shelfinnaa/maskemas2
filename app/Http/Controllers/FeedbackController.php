@@ -120,7 +120,9 @@ class FeedbackController extends Controller
                 $imageFile->move($uploadPath, $filename);
                 $finalImagePathName = $uploadPath . $filename;
 
-                $validateData['person_image'] = $finalImagePathName;
+                $feedback->update([
+                    'person_image' => $finalImagePathName
+                ]);
             }
 
 
